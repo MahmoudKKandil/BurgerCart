@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Burger Cart</string>
     <string-array name="list">
-        <item>samer</item>
-        <item>farah</item>
-        <item>yong</item>
+        <item>Order</item>
+        <item>Waiting</item>
+        <item>History</item>
     </string-array>
 </resources>

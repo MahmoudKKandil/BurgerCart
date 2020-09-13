@@ -26,15 +26,15 @@ public class MainActivity extends AppCompatActivity {
            @Override
            public void onItemClick(AdapterView<?> parent, View view, int i, long l) {
                TextView v=(TextView) view;
-               if(((TextView) view).getText().toString().equals("samer")) {
+               if(((TextView) view).getText().toString().equals("Order")) {
                    Intent inn = new Intent(MainActivity.this, MainActivity2.class);
                    startActivity(inn);
                }
-               if(((TextView) view).getText().toString().equals("farah")) {
+               if(((TextView) view).getText().toString().equals("Waiting")) {
                    Intent inn = new Intent(MainActivity.this, MainActivity3.class);
                    startActivity(inn);
                }
-               if(((TextView) view).getText().toString().equals("yong")) {
+               if(((TextView) view).getText().toString().equals("History")) {
                    Intent inn = new Intent(MainActivity.this, MainActivity4.class);
                    startActivity(inn);
                }
