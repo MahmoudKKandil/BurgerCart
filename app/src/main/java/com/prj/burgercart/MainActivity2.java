@@ -32,12 +32,12 @@ public class MainActivity2 extends AppCompatActivity {
         id.setText(neworder.getorderid());
         id.setEnabled(false);
         Button b=(Button)findViewById(R.id.button);
-        final EditText describtion=(EditText) findViewById(R.id.description);
+        final EditText description=(EditText) findViewById(R.id.description);
         final EditText details=(EditText) findViewById(R.id.details);
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                neworder.createneworder(neworder.getorderid(),formattedDate,describtion.getText().toString(),details.getText().toString());
+                neworder.createneworder(neworder.getorderid(),formattedDate,description.getText().toString(),details.getText().toString());
 
             }
         });

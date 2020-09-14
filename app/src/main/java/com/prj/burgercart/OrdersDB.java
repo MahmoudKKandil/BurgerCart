@@ -1,10 +1,10 @@
-
 package com.prj.burgercart;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteOpenHelper;
+
 public class OrdersDB extends SQLiteOpenHelper {
     private static String databaseName = "ordersDatabase";
     SQLiteDatabase ordersdatabase;
@@ -34,12 +34,22 @@ public class OrdersDB extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table orders(id integer primary key,"+
-                "name text not null, description text)");
+                "time text not null, description text not null,details,status text not null )");
 
     }
-
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("drop table if exists orders");
         onCreate(db);
-    }}
+    }
+
+    public Cursor fetchAllOrders() {
+        ordersdatabase = getReadableDatabase();
+        String [] rowDetails = {"id","time","description","details","status"};
+        Cursor cursor = ordersdatabase.query("orders",rowDetails,null,null,null,null,null);
+        if(cursor != null)
+            cursor.moveToFirst();
+        ordersdatabase.close();
+        return cursor;
+    }
+}
