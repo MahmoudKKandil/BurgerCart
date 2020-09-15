@@ -8,9 +8,13 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class OrdersDB extends SQLiteOpenHelper {
     private static String databaseName = "ordersDatabase";
     SQLiteDatabase ordersdatabase;
+    int usedbefore;
     public OrdersDB(Context context) {
-        super(context,databaseName,null,1);}
+
+
+        super(context,databaseName,null,1);  usedbefore=0;}
     public void createneworder(int id, String time, String description, String details) {
+        usedbefore=1;
         ContentValues row = new ContentValues();
         row.put("id", id);
         row.put("time", time);
@@ -23,17 +27,21 @@ public class OrdersDB extends SQLiteOpenHelper {
     }
 
     public int getorderid() {
-        ordersdatabase = getWritableDatabase();
-        Cursor cursor = ordersdatabase.rawQuery("SELECT  * FROM ordersdatabase", null);
-        int count = cursor.getCount();
+if(usedbefore==1)
+{ordersdatabase = getReadableDatabase();
+        Cursor cursor= ordersdatabase.rawQuery("SELECT  * FROM ordersdatabase", null);
+      cursor.moveToFirst();
+       int count = cursor.getCount()+1;
         cursor.close();
-        return count;
+        return count;}
+       else {
+     return 1;}
 
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table orders(id integer primary key,"+
+        db.execSQL("create table orders(id integer primary key autoincrement,"+
                 "time text not null, description text not null,details,status text not null )");
 
     }

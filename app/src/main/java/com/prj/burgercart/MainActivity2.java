@@ -28,8 +28,8 @@ public class MainActivity2 extends AppCompatActivity {
         status.setText("notcompleted");
         status.setEnabled(false);
         final OrdersDB neworder =new OrdersDB(this);
-        final EditText id=(EditText) findViewById(R.id.id);
-        id.setText(neworder.getorderid());
+       final EditText id=(EditText) findViewById(R.id.id);
+        id.setText(String.valueOf(neworder.getorderid()));
         id.setEnabled(false);
         Button b=(Button)findViewById(R.id.button);
         final EditText description=(EditText) findViewById(R.id.description);
@@ -37,7 +37,7 @@ public class MainActivity2 extends AppCompatActivity {
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                neworder.createneworder(neworder.getorderid(),formattedDate,description.getText().toString(),details.getText().toString());
+                neworder.createneworder(Integer.parseInt(id.getText().toString()),formattedDate,description.getText().toString(),details.getText().toString());
 
             }
         });
