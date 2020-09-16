@@ -4,6 +4,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 public class OrdersDB extends SQLiteOpenHelper {
     private static String databaseName = "ordersDatabase";
@@ -20,7 +21,7 @@ public class OrdersDB extends SQLiteOpenHelper {
         row.put("time", time);
         row.put("description", description);
         row.put("details", details);
-        row.put("status", "noncompleted");
+        row.put("status", "notcompleted");
         ordersdatabase = getWritableDatabase();
         ordersdatabase.insert("orders", null, row);
         ordersdatabase.close();
@@ -50,11 +51,23 @@ ordersdatabase=getReadableDatabase();
 
     public Cursor fetchAllOrders() {
         ordersdatabase = getReadableDatabase();
-        String [] rowDetails = {"id","time","description","details","status"};
-        Cursor cursor = ordersdatabase.query("orders",rowDetails,null,null,null,null,null);
+        String [] rowDetails = {"id","time","description","details"};
+        Cursor cursor = ordersdatabase.rawQuery("select * from orders where status like?",new String[]{"notcompleted"});
         if(cursor != null)
             cursor.moveToFirst();
         ordersdatabase.close();
         return cursor;
+    }
+    public void Searching(String pos)
+    {
+        ordersdatabase = getWritableDatabase();
+        ContentValues newValues = new ContentValues();
+        newValues.put("status", "completed");
+int p=Integer.parseInt(pos);
+
+        ordersdatabase.update("orders", newValues, "id"+"="+p, null);
+
+        ordersdatabase.close();
+
     }
 }

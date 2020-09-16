@@ -9,9 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.prj.burgercart.MainActivity5"></activity>
+        <activity android:name="com.prj.burgercart.MainActivity3"></activity>
+        <activity android:name="com.prj.burgercart.MainActivity5" />
         <activity android:name="com.prj.burgercart.MainActivity4" />
-        <activity android:name="com.prj.burgercart.MainActivity3" />
         <activity android:name="com.prj.burgercart.MainActivity2" />
         <activity android:name="com.prj.burgercart.MainActivity">
             <intent-filter>
