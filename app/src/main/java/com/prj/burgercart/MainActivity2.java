@@ -1,5 +1,6 @@
 package com.prj.burgercart;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -29,7 +30,7 @@ public class MainActivity2 extends AppCompatActivity {
         status.setText("notcompleted");
         status.setEnabled(false);
         final OrdersDB neworder =new OrdersDB(this);
-        
+
        final EditText id=(EditText) findViewById(R.id.id);
         id.setText(String.valueOf(neworder.getorderid()));
         id.setEnabled(false);
@@ -40,9 +41,9 @@ public class MainActivity2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 neworder.createneworder(Integer.parseInt(id.getText().toString()),formattedDate,description.getText().toString(),details.getText().toString());
-                Toast.makeText(getApplicationContext(),"Order Added ",Toast.LENGTH_LONG).show();
-description.setText(" ");
-details.setText(" ");
+                Intent inn = new Intent(MainActivity2.this, MainActivity2.class);
+                startActivity(inn);
+
 
             }
         });
