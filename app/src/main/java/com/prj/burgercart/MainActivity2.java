@@ -21,12 +21,6 @@ public class MainActivity2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-        EditText time=(EditText) findViewById(R.id.time);
-        Calendar c = Calendar.getInstance();
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        final String formattedDate = df.format(c.getTime());
-        time.setText(formattedDate);
-        time.setEnabled(false);
         final EditText status=(EditText) findViewById(R.id.status);
         status.setText("notcompleted");
         status.setEnabled(false);
@@ -41,6 +35,9 @@ public class MainActivity2 extends AppCompatActivity {
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Calendar c = Calendar.getInstance();
+                SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                final String formattedDate = df.format(c.getTime());
                 neworder.createneworder(Integer.parseInt(id.getText().toString()),formattedDate,description.getText().toString(),details.getText().toString());
                 Intent inn = new Intent(MainActivity2.this, MainActivity2.class);
                 finish();
