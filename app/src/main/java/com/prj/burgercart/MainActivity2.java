@@ -1,5 +1,6 @@
 package com.prj.burgercart;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -42,9 +43,8 @@ public class MainActivity2 extends AppCompatActivity {
             public void onClick(View v) {
                 neworder.createneworder(Integer.parseInt(id.getText().toString()),formattedDate,description.getText().toString(),details.getText().toString());
                 Intent inn = new Intent(MainActivity2.this, MainActivity2.class);
+                finish();
                 startActivity(inn);
-
-
             }
         });
     }
