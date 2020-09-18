@@ -52,7 +52,16 @@ ordersdatabase=getReadableDatabase();
     public Cursor fetchAllOrders() {
         ordersdatabase = getReadableDatabase();
         String [] rowDetails = {"id","time","description","details"};
-        Cursor cursor = ordersdatabase.rawQuery("select * from orders where status like?",new String[]{"notcompleted"});
+        Cursor cursor = ordersdatabase.rawQuery("select * from orders where status like?",new String[]{"Notcompleted"});
+        if(cursor != null)
+            cursor.moveToFirst();
+        ordersdatabase.close();
+        return cursor;
+    }
+    public Cursor fetchAllOrders2() {
+        ordersdatabase = getReadableDatabase();
+        String [] rowDetails = {"id","time","description","details"};
+        Cursor cursor = ordersdatabase.rawQuery("select * from orders where status like?",new String[]{"completed"});
         if(cursor != null)
             cursor.moveToFirst();
         ordersdatabase.close();
