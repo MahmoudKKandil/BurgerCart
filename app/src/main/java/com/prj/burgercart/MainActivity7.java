@@ -19,8 +19,8 @@ public class MainActivity7 extends AppCompatActivity {
         ListView list=(ListView)findViewById(R.id.historyorders);
 
 OrdersDB h=new OrdersDB(this);
-        String username=getIntent().getStringExtra("username");
-Cursor cursor=h.showhistoryorders(username);
+
+Cursor cursor=h.showhistoryorders(data.username);
 
 String []arr ;
         if (cursor != null && cursor.getCount()>0){
