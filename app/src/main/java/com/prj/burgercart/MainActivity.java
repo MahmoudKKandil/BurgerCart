@@ -28,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
                TextView v=(TextView) view;
                if(((TextView) view).getText().toString().equals("Order")) {
                    Intent inn = new Intent(MainActivity.this, MainActivity2.class);
+                   String username=getIntent().getStringExtra("username");
+                   inn.putExtra("username",username);
                    startActivity(inn);
                }
                if(((TextView) view).getText().toString().equals("Waiting")) {

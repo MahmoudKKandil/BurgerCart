@@ -157,7 +157,7 @@ ordersdatabase=getReadableDatabase();
     int id;
         ordersdatabase = getReadableDatabase();
         Cursor cursor = ordersdatabase.rawQuery("select UserID from user where UserName like?",new String[]{UserName});
-        if(cursor != null)
+        if(cursor != null&&cursor.moveToFirst())
             cursor.moveToFirst();
 
         ordersdatabase.close();
@@ -182,4 +182,16 @@ int p=Integer.parseInt(pos);
         ordersdatabase.close();
 
     }
-}
+    public Cursor showhistoryorders(String username){
+      int id=  getUserId(username);
+      String type= GetUserType(username);
+
+      ordersdatabase=getReadableDatabase();
+        Cursor cursor;
+        if(type=="AD")cursor= ordersdatabase.rawQuery("select * from orders",null);
+        else cursor= ordersdatabase.rawQuery("select * from orders where User_ID like?", new String[]{String.valueOf(id)});
+        if(cursor != null)
+            cursor.moveToFirst();
+        ordersdatabase.close();
+        return cursor;}
+    }

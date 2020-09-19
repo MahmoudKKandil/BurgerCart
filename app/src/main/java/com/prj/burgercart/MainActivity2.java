@@ -38,7 +38,9 @@ public class MainActivity2 extends AppCompatActivity {
                 Calendar c = Calendar.getInstance();
                 SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 final String formattedDate = df.format(c.getTime());
-                neworder.createneworder(Integer.parseInt(id.getText().toString()),formattedDate,description.getText().toString(),details.getText().toString());
+                String username=getIntent().getStringExtra("username");
+                int userid=neworder.getUserId(username);
+                neworder.createneworder(Integer.parseInt(id.getText().toString()),formattedDate,description.getText().toString(),details.getText().toString(),userid);
                 Intent inn = new Intent(MainActivity2.this, MainActivity2.class);
                 finish();
                 startActivity(inn);
