@@ -27,7 +27,7 @@ String []arr ;
             cursor.moveToFirst();
            arr = new String[cursor.getCount()];
             do{
-                for(int i = 0; i < cursor.getCount(); i ++){
+                for(int i = 0; i < cursor.getCount(); i++){
                    arr[i]=(cursor.getString(i));
                 }
             }while(cursor.moveToNext());
