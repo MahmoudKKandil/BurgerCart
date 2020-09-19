@@ -76,7 +76,7 @@ or.getDatabaseName();
                     or.createNewUser(UserName.getText().toString(), Password.getText().toString(), Phone.getText().toString(), Email.getText().toString(), Address.getText().toString());
                     Toast.makeText(getApplicationContext(),"Done",Toast.LENGTH_LONG).show();
                     Intent inn = new Intent(Register.this, Login.class);
-                    startActivity(inn);
+                    finish();
                 }
             }
         });
@@ -85,7 +85,7 @@ or.getDatabaseName();
             public void onClick(View v) {
 
                 Intent inn = new Intent(Register.this,Login.class);
-                startActivity(inn);
+                finish();
             }
         });
     }

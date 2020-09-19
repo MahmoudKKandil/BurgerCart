@@ -42,12 +42,12 @@ public class Login extends AppCompatActivity {
                     if(Password.getText().toString().equals(or.GetPassword((UserName.getText().toString())))) {
                         if(or.GetUserType(UserName.getText().toString()).equals("AD"))
                         {
-                            Intent inn = new Intent(Login.this, MainActivity5.class);
+                            Intent inn = new Intent(Login.this, MainActivity.class);
                             startActivity(inn);
                         }
                         else
                             {
-                                Intent inn = new Intent(Login.this, MainActivity6.class);
+                                Intent inn = new Intent(Login.this, MainActivity7.class);
                                 inn.putExtra("username", UserName.getText());
                                 startActivity(inn);
                             }
