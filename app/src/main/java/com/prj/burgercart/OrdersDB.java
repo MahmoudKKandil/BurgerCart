@@ -24,7 +24,7 @@ public class OrdersDB extends SQLiteOpenHelper {
         row.put("description", description);
         row.put("details", details);
         row.put("status", "notcompleted");
-        row.put("UserID", UserID);
+        row.put("User_ID", UserID);
         ordersdatabase = getWritableDatabase();
         ordersdatabase.insert("orders", null, row);
         ordersdatabase.close();

@@ -20,17 +20,19 @@ public class MainActivity7 extends AppCompatActivity {
         ArrayAdapter<String> listadapter=new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1);
         list.setAdapter(listadapter);
 OrdersDB h=new OrdersDB(this);
-
-Cursor cursor=h.showhistoryorders(data.username);
+String username=getIntent().getStringExtra("username");
+Cursor cursor=h.showhistoryorders(username);
 
         if (cursor != null && cursor.getCount()>0){
             cursor.moveToFirst();
 
-            do{
+
                 for(int i = 0; i < cursor.getCount(); i++){
-                  listadapter.add(cursor.getString(i).toString());
+                    String str=cursor.getString(1)+" "+cursor.getString(2).toString()+" "+cursor.getString(3).toString()+" "+ cursor.getString(5).toString();
+                  listadapter.add(str);
+                  cursor.moveToNext();
                 }
-            }while(cursor.moveToNext());
+
 
 
 

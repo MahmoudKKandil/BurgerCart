@@ -48,7 +48,7 @@ public class Login extends AppCompatActivity {
                         else
                             {
                                 Intent inn = new Intent(Login.this, MainActivity6.class);
-                                data.username=UserName.getText().toString();
+                                inn.putExtra("username",UserName.getText().toString());
                                 startActivity(inn);
                             }
 
