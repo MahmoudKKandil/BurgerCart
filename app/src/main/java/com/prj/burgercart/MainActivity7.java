@@ -17,26 +17,30 @@ public class MainActivity7 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main7);
         ListView list=(ListView)findViewById(R.id.historyorders);
-
+        ArrayAdapter<String> listadapter=new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1);
+        list.setAdapter(listadapter);
 OrdersDB h=new OrdersDB(this);
 
 Cursor cursor=h.showhistoryorders(data.username);
-        String []arr = new String[cursor.getCount()];
-
-
-
 
         if (cursor != null && cursor.getCount()>0){
             cursor.moveToFirst();
+
             do{
                 for(int i = 0; i < cursor.getCount(); i++){
-                   arr[i]=(cursor.getString(i));
+                  listadapter.add(cursor.getString(i).toString());
                 }
             }while(cursor.moveToNext());
-        }
-        else{ arr = new String[1];arr[0]="NO PAST ORDERS";}
-        ArrayAdapter<String> listadapter=new ArrayAdapter<>(this, R.layout.activity_main7,arr);
 
-        list.setAdapter(listadapter);
+
+
+
+        }
+        else{ listadapter.add("NO PAST ORDERS");
+
+        }
+
+
+
     }
 }

@@ -9,7 +9,6 @@ import android.widget.Toast;
 public class OrdersDB extends SQLiteOpenHelper {
     private static String databaseName = "ordersDatabase";
     SQLiteDatabase ordersdatabase;
-   static int usedbefore=0;
    Context C;
     public OrdersDB(Context context) {
 
@@ -18,7 +17,7 @@ public class OrdersDB extends SQLiteOpenHelper {
         C=context;
     }
     public void createneworder(int id, String time, String description, String details, int UserID) {
-        usedbefore++;
+
         ContentValues row = new ContentValues();
         row.put("id", id);
         row.put("time", time);

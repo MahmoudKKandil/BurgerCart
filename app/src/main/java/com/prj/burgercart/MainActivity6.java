@@ -16,10 +16,18 @@ public class MainActivity6 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main6);
         Button showorders=(Button)findViewById(R.id.userordersbutton);
+        Button add=(Button)findViewById(R.id.addneworderbutton);
         showorders.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent inn = new Intent(MainActivity6.this, MainActivity7.class);
+                startActivity(inn);
+            }
+        });
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent inn = new Intent(MainActivity6.this, MainActivity2.class);
                 startActivity(inn);
             }
         });
