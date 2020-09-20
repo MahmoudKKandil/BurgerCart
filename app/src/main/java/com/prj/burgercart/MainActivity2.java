@@ -41,7 +41,12 @@ public class MainActivity2 extends AppCompatActivity {
                 String username=getIntent().getStringExtra("username");
                 int userid=neworder.getUserId(username);
                 neworder.createneworder(Integer.parseInt(id.getText().toString()),formattedDate,description.getText().toString(),details.getText().toString(),userid);
-                id.setText(String.valueOf(neworder.getorderid()));
+               if(neworder.GetUserType(username).toString().equals("AD")){ Intent inn = new Intent(MainActivity2.this, MainActivity.class);
+                   inn.putExtra("username",username);
+                   startActivity(inn);}
+               else{ Intent inn = new Intent(MainActivity2.this, MainActivity6.class);
+                   inn.putExtra("username",username);
+                   startActivity(inn);}
             }
         });
     }
