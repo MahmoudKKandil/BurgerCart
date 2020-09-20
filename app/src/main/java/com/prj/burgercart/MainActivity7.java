@@ -24,9 +24,7 @@ Cursor cursor=h.showhistoryorders(data.username);
         String []arr = new String[cursor.getCount()];
 
 
-        ArrayAdapter<String> listadapter=new ArrayAdapter<>(this, R.layout.activity_main7,arr);
 
-        list.setAdapter(listadapter);
 
         if (cursor != null && cursor.getCount()>0){
             cursor.moveToFirst();
@@ -37,5 +35,8 @@ Cursor cursor=h.showhistoryorders(data.username);
             }while(cursor.moveToNext());
         }
         else{ arr = new String[1];arr[0]="NO PAST ORDERS";}
+        ArrayAdapter<String> listadapter=new ArrayAdapter<>(this, R.layout.activity_main7,arr);
+
+        list.setAdapter(listadapter);
     }
 }
