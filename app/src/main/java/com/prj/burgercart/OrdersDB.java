@@ -160,8 +160,10 @@ int p=Integer.parseInt(pos);
 
       ordersdatabase=getReadableDatabase();
         Cursor cursor;
-        if(type.equals("AD"))cursor= ordersdatabase.rawQuery("select * from orders",null);
-        else cursor= ordersdatabase.rawQuery("select * from orders where User_ID like?", new String[]{String.valueOf(id)});
+        if(type.equals("AD"))
+            cursor= ordersdatabase.rawQuery("select * from orders",null);
+        else
+            cursor= ordersdatabase.rawQuery("select * from orders where User_ID like ?", new String[]{String.valueOf(id)});
         if(cursor != null)
             cursor.moveToFirst();
         ordersdatabase.close();

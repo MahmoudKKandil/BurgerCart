@@ -39,7 +39,7 @@ public class AddOrder extends AppCompatActivity {
                 final String formattedDate = df.format(c.getTime());
                 String username=getIntent().getStringExtra("username");
                 int userid=neworder.getUserId(username);
-                neworder.createneworder(Integer.parseInt(id.getText().toString()),formattedDate,description.getText().toString(),details.getText().toString(),userid);
+                neworder.CreateNewOrder(Integer.parseInt(id.getText().toString()),formattedDate,description.getText().toString(),details.getText().toString(),userid);
 
                if(neworder.GetUserType(username).toString().equals("AD")){ Intent inn = new Intent(AddOrder.this, MainActivity.class);
                    inn.putExtra("username",username);
