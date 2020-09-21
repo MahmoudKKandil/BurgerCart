@@ -16,7 +16,7 @@ public class OrdersDB extends SQLiteOpenHelper {
         super(context,databaseName,null,1);
         C=context;
     }
-    public void createneworder(int id, String time, String description, String details, int UserID) {
+    public void CreateNewOrder(int id, String time, String description, String details, int UserID) {
 
         ContentValues row = new ContentValues();
         row.put("id", id);
@@ -65,7 +65,6 @@ ordersdatabase=getReadableDatabase();
         db.execSQL("drop table if exists user");
         onCreate(db);
     }
-
     public Cursor fetchAllOrders() {
         ordersdatabase = getReadableDatabase();
         String [] rowDetails = {"id","time","description","details"};
@@ -129,16 +128,13 @@ ordersdatabase=getReadableDatabase();
     public String GetUserType(String UserName) {
         ordersdatabase = getReadableDatabase();
         Cursor cursor = ordersdatabase.rawQuery("select UserType from user where UserName like?",new String[]{UserName});
-        String UserType="";
-        cursor.moveToFirst();
-        if( cursor != null && cursor.moveToFirst() )
-        {
-            UserType=  cursor.getString(cursor.getColumnIndex("UserType"));
+        if(cursor.moveToFirst() ) {
+            ordersdatabase.close();
+            return cursor.getString(cursor.getColumnIndex("UserType"));
         }
-        if(cursor != null)
-            cursor.moveToFirst();
         ordersdatabase.close();
-        return  UserType;
+
+        return null;
     }
     public boolean CheckingPhone(String Phone) {
         ordersdatabase = getReadableDatabase();

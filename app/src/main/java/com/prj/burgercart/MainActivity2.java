@@ -1,12 +1,10 @@
 package com.prj.burgercart;
 
-import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -40,7 +38,7 @@ public class MainActivity2 extends AppCompatActivity {
                 final String formattedDate = df.format(c.getTime());
                 String username=getIntent().getStringExtra("username");
                 int userid=neworder.getUserId(username);
-                neworder.createneworder(Integer.parseInt(id.getText().toString()),formattedDate,description.getText().toString(),details.getText().toString(),userid);
+                neworder.CreateNewOrder(Integer.parseInt(id.getText().toString()),formattedDate,description.getText().toString(),details.getText().toString(),userid);
                if(neworder.GetUserType(username).toString().equals("AD")){ Intent inn = new Intent(MainActivity2.this, MainActivity.class);
                    inn.putExtra("username",username);
                    startActivity(inn);}
