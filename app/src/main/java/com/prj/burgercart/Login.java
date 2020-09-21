@@ -25,7 +25,6 @@ public class Login extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                or.UpdatingUser(1);
                 Intent inn = new Intent(Login.this, Register.class);
                 startActivity(inn);
             }
