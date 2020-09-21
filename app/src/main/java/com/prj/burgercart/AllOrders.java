@@ -10,7 +10,7 @@ import android.widget.ListView;
 
 import com.example.myapplication.R;
 
-public class MainActivity7 extends AppCompatActivity {
+public class AllOrders extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

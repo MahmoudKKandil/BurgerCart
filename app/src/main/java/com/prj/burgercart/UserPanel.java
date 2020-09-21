@@ -9,7 +9,7 @@ import android.widget.Button;
 
 import com.example.myapplication.R;
 
-public class MainActivity6 extends AppCompatActivity {
+public class UserPanel extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +20,7 @@ public class MainActivity6 extends AppCompatActivity {
         showorders.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent inn = new Intent(MainActivity6.this, MainActivity7.class);
+                Intent inn = new Intent(UserPanel.this, AllOrders.class);
                 String username=getIntent().getStringExtra("username");
                 inn.putExtra("username",username);
                 startActivity(inn);
@@ -29,7 +29,7 @@ public class MainActivity6 extends AppCompatActivity {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent inn = new Intent(MainActivity6.this, MainActivity2.class);
+                Intent inn = new Intent(UserPanel.this, AddOrder.class);
                 String username=getIntent().getStringExtra("username");
                 inn.putExtra("username",username);
                 startActivity(inn);

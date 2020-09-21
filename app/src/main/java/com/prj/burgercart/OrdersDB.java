@@ -28,6 +28,7 @@ public class OrdersDB extends SQLiteOpenHelper {
         ordersdatabase = getWritableDatabase();
         ordersdatabase.insert("orders", null, row);
         ordersdatabase.close();
+        
     }
 
     public int getorderid() {
