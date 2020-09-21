@@ -9,11 +9,21 @@ import android.widget.Toast;
 public class OrdersDB extends SQLiteOpenHelper {
     private static String databaseName = "ordersDatabase";
     SQLiteDatabase ordersdatabase;
+<<<<<<< Updated upstream
    static int usedbefore=0;
     public OrdersDB(Context context) {
+=======
+    int usedbefore;
+>>>>>>> Stashed changes
 
+    public OrdersDB(Context context) {
+        super(context,databaseName,null,1);  usedbefore=0;
+    }
 
+<<<<<<< Updated upstream
         super(context,databaseName,null,1);  }
+=======
+>>>>>>> Stashed changes
     public void createneworder(int id, String time, String description, String details) {
         usedbefore++;
         ContentValues row = new ContentValues();
@@ -28,6 +38,7 @@ public class OrdersDB extends SQLiteOpenHelper {
     }
 
     public int getorderid() {
+<<<<<<< Updated upstream
 
 ordersdatabase=getReadableDatabase();
         Cursor cursor= ordersdatabase.rawQuery("SELECT *  FROM orders", null);
@@ -35,6 +46,20 @@ ordersdatabase=getReadableDatabase();
        int count = cursor.getCount()+1;
         cursor.close();
         return count;
+=======
+    if(usedbefore==1)
+    {
+    ordersdatabase = getReadableDatabase();
+        Cursor cursor= ordersdatabase.rawQuery("SELECT  * FROM ordersdatabase", null);
+      cursor.moveToFirst();
+       int count = cursor.getCount()+1;
+        cursor.close();
+        return count;
+    }
+    else {
+        return 1;
+    }
+>>>>>>> Stashed changes
     }
 
     @Override
@@ -67,6 +92,16 @@ ordersdatabase=getReadableDatabase();
         ordersdatabase.close();
         return cursor;
     }
+    public Cursor fetchAllOrders2() {
+        ordersdatabase = getReadableDatabase();
+        String [] rowDetails = {"id","time","description","details"};
+        Cursor cursor = ordersdatabase.rawQuery("select * from orders where status like?",new String[]{"completed"});
+        if(cursor != null)
+            cursor.moveToFirst();
+        ordersdatabase.close();
+        return cursor;
+    }
+
     public void Searching(String pos)
     {
         ordersdatabase = getWritableDatabase();
