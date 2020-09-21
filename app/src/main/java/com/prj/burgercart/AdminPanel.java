@@ -33,7 +33,7 @@ public class AdminPanel extends AppCompatActivity {
                    startActivity(inn);
                }
                if(((TextView) view).getText().toString().equals("Waiting")) {
-                   Intent inn = new Intent(AdminPanel.this, MainActivity3.class);
+                   Intent inn = new Intent(AdminPanel.this, PendingOrders.class);
                    startActivity(inn);
                }
                if(((TextView) view).getText().toString().equals("History")) {

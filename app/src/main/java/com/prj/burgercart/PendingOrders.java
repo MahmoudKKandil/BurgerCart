@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 import com.example.myapplication.R;
 
-public class MainActivity3 extends AppCompatActivity {
+public class PendingOrders extends AppCompatActivity {
     ListView ordersList;
     orderAdapter or;
     OrdersDB orders;
@@ -25,7 +25,7 @@ String pos;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main3);
+        setContentView(R.layout.activity_pendingorders);
         ordersList = (ListView)findViewById(R.id.listview11);
 
         ArrayAdapter<String> adapter= new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_list_item_1);

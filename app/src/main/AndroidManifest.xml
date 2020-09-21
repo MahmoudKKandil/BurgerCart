@@ -13,7 +13,7 @@
         <activity android:name="com.prj.burgercart.UserPanel" />
         <activity android:name="com.prj.burgercart.AdminPanel" />
         <activity android:name="com.prj.burgercart.Register" />
-        <activity android:name="com.prj.burgercart.MainActivity3" />
+        <activity android:name="com.prj.burgercart.PendingOrders" />
         <activity android:name="com.prj.burgercart.AddOrder" />
         <activity android:name="com.prj.burgercart.Login">
             <intent-filter>
