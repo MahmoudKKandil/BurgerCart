@@ -13,7 +13,7 @@ import com.example.myapplication.R;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class MainActivity2 extends AppCompatActivity {
+public class AddOrder extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,16 +30,23 @@ public class MainActivity2 extends AppCompatActivity {
         Button b=(Button)findViewById(R.id.button);
         final EditText description=(EditText) findViewById(R.id.description);
         final EditText details=(EditText) findViewById(R.id.details);
+
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Calendar c = Calendar.getInstance();
                 SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 final String formattedDate = df.format(c.getTime());
-                neworder.createneworder(Integer.parseInt(id.getText().toString()),formattedDate,description.getText().toString(),details.getText().toString());
-                Intent inn = new Intent(MainActivity2.this, MainActivity2.class);
-                finish();
-                startActivity(inn);
+                String username=getIntent().getStringExtra("username");
+                int userid=neworder.getUserId(username);
+                neworder.CreateNewOrder(Integer.parseInt(id.getText().toString()),formattedDate,description.getText().toString(),details.getText().toString(),userid);
+
+               if(neworder.GetUserType(username).toString().equals("AD")){ Intent inn = new Intent(AddOrder.this, MainActivity.class);
+                   inn.putExtra("username",username);
+                   startActivity(inn);}
+               else{ Intent inn = new Intent(AddOrder.this, UserPanel.class);
+                   inn.putExtra("username",username);
+                   startActivity(inn);}
             }
         });
     }
