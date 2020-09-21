@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.prj.burgercart.ViewOrders"></activity>
+        <activity android:name="com.prj.burgercart.EditUser"></activity>
+        <activity android:name="com.prj.burgercart.ViewOrders" />
         <activity android:name="com.prj.burgercart.UserPanel" />
         <activity android:name="com.prj.burgercart.AdminPanel" />
         <activity android:name="com.prj.burgercart.Register" />

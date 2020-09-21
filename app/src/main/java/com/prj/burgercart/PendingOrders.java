@@ -2,7 +2,6 @@ package com.prj.burgercart;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -42,7 +41,7 @@ String pos;
                 descrp = cursor.getString(2);
                 date = cursor.getString(1);
                 order orr = new order(id, info, descrp, date);
-               or.add(orr);
+                or.add(orr);
 
             }while(cursor.moveToNext());
         }

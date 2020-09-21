@@ -36,6 +36,10 @@ public class AdminPanel extends AppCompatActivity {
                    Intent inn = new Intent(AdminPanel.this, PendingOrders.class);
                    startActivity(inn);
                }
+               if(((TextView) view).getText().toString().equals("Users")) {
+                   Intent inn = new Intent(AdminPanel.this, EditUser.class);
+                   startActivity(inn);
+               }
                if(((TextView) view).getText().toString().equals("History")) {
               //     Intent inn = new Intent(MainActivity.this, MainActivity4.class);
                //    startActivity(inn);

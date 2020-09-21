@@ -1,13 +1,13 @@
 package com.prj.burgercart;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.R;
 
@@ -17,15 +17,17 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
        final  OrdersDB or=new OrdersDB(this);
-       or.GetUserType("t");
         final EditText UserName=(EditText) findViewById(R.id.un);
         final EditText Password=(EditText) findViewById(R.id.pt);
         final Button login=(Button)  findViewById(R.id.login);
         Button register =(Button)  findViewById(R.id.register);
+       
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                or.UpdatingUser(1);
                 Intent inn = new Intent(Login.this, Register.class);
                 startActivity(inn);
             }

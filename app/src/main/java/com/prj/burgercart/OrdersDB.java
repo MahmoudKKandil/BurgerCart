@@ -1,20 +1,21 @@
 package com.prj.burgercart;
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.widget.Toast;
 
 public class OrdersDB extends SQLiteOpenHelper {
     private static String databaseName = "ordersDatabase";
     SQLiteDatabase ordersdatabase;
 
-   static int usedbefore=0;
-   Context C;
+    static int usedbefore = 0;
+    Context C;
+
     public OrdersDB(Context context) {
-        super(context,databaseName,null,1);
+        super(context, databaseName, null, 1);
     }
+
     public void CreateNewOrder(int id, String time, String description, String details, int UserID) {
 
         ContentValues row = new ContentValues();
@@ -27,28 +28,29 @@ public class OrdersDB extends SQLiteOpenHelper {
         ordersdatabase = getWritableDatabase();
         ordersdatabase.insert("orders", null, row);
         ordersdatabase.close();
-        
+
     }
 
     public int getorderid() {
 
-ordersdatabase=getReadableDatabase();
-        Cursor cursor= ordersdatabase.rawQuery("SELECT *  FROM orders", null);
+        ordersdatabase = getReadableDatabase();
+        Cursor cursor = ordersdatabase.rawQuery("SELECT *  FROM orders", null);
         cursor.moveToFirst();
-       int count = cursor.getCount()+1;
+        int count = cursor.getCount() + 1;
         cursor.close();
         return count;
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table orders(id integer primary key autoincrement,"+
+        db.execSQL("create table orders(id integer primary key autoincrement," +
                 "time text not null, description text not null,details,status text not null, User_ID integer, FOREIGN KEY(User_ID) REFERENCES orders (UserID) )");
-        db.execSQL("create table user"+"(UserID integer primary key autoincrement, UserName text UNIQUE not null, Password text not null, Phone text UNIQUE not null, Email text UNIQUE not null, Address text not null,UserType text default 'NU') ");
+        db.execSQL("create table user" + "(UserID integer primary key autoincrement, UserName text UNIQUE not null, Password text not null, Phone text UNIQUE not null, Email text UNIQUE not null, Address text not null,UserType text default 'NU') ");
 
 
     }
-    public void createNewUser( String Name, String pass, String phone, String Email,String Address) {
+
+    public void createNewUser(String Name, String pass, String phone, String Email, String Address) {
         ContentValues row = new ContentValues();
         row.put("UserName", Name);
         row.put("Password", pass);
@@ -59,17 +61,19 @@ ordersdatabase=getReadableDatabase();
         ordersdatabase.insert("user", null, row);
         ordersdatabase.close();
     }
+
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("drop table if exists orders");
         db.execSQL("drop table if exists user");
         onCreate(db);
     }
+
     public Cursor fetchAllOrders() {
         ordersdatabase = getReadableDatabase();
-        String [] rowDetails = {"id","time","description","details"};
-        Cursor cursor = ordersdatabase.rawQuery("select * from orders where status like?",new String[]{"Notcompleted"});
-        if(cursor != null)
+        String[] rowDetails = {"id", "time", "description", "details"};
+        Cursor cursor = ordersdatabase.rawQuery("select * from orders where status like?", new String[]{"Notcompleted"});
+        if (cursor != null)
             cursor.moveToFirst();
         ordersdatabase.close();
         return cursor;
@@ -78,20 +82,22 @@ ordersdatabase=getReadableDatabase();
 
     public boolean CheckingEmail(String Email) {
         ordersdatabase = getReadableDatabase();
-        Cursor cursor = ordersdatabase.rawQuery("select count(*) from user where Email like?",new String[]{Email});
+        Cursor cursor = ordersdatabase.rawQuery("select count(*) from user where Email like?", new String[]{Email});
         cursor.moveToFirst();
         int count = cursor.getInt(0);
         ordersdatabase.close();
-        return count >0;
+        return count > 0;
     }
+
     public boolean CheckingUserName(String UserName) {
         ordersdatabase = getReadableDatabase();
-        Cursor cursor = ordersdatabase.rawQuery("select count(*) from user where UserName like?",new String[]{UserName});
+        Cursor cursor = ordersdatabase.rawQuery("select count(*) from user where UserName like?", new String[]{UserName});
         cursor.moveToFirst();
         int count = cursor.getInt(0);
         ordersdatabase.close();
-        return count >0;
+        return count > 0;
     }
+
     public String GetPassword(String UserName) {
         String pass = "";
         ordersdatabase = getReadableDatabase();
@@ -106,10 +112,11 @@ ordersdatabase=getReadableDatabase();
 
         return pass;
     }
+
     public String GetUserType(String UserName) {
         ordersdatabase = getReadableDatabase();
-        Cursor cursor = ordersdatabase.rawQuery("select UserType from user where UserName like?",new String[]{UserName});
-        if(cursor.moveToFirst() ) {
+        Cursor cursor = ordersdatabase.rawQuery("select UserType from user where UserName like?", new String[]{UserName});
+        if (cursor.moveToFirst()) {
             ordersdatabase.close();
             return cursor.getString(cursor.getColumnIndex("UserType"));
         }
@@ -117,57 +124,75 @@ ordersdatabase=getReadableDatabase();
 
         return null;
     }
+
     public boolean CheckingPhone(String Phone) {
         ordersdatabase = getReadableDatabase();
-        Cursor cursor = ordersdatabase.rawQuery("select count(*) from user where Phone like?",new String[]{Phone});
+        Cursor cursor = ordersdatabase.rawQuery("select count(*) from user where Phone like?", new String[]{Phone});
         cursor.moveToFirst();
-       int count = cursor.getInt(0);
+        int count = cursor.getInt(0);
         ordersdatabase.close();
-        return count >0;
+        return count > 0;
     }
+
     public int getUserId(String UserName) {
-    int id=-1;
+        int id = -1;
         ordersdatabase = getReadableDatabase();
-        Cursor cursor = ordersdatabase.rawQuery("select UserID from user where UserName like?",new String[]{UserName});
+        Cursor cursor = ordersdatabase.rawQuery("select UserID from user where UserName like?", new String[]{UserName});
         cursor.moveToFirst();
-        if(cursor != null&&cursor.moveToFirst())
-           id=Integer.parseInt(cursor.getString(0));
+        if (cursor != null && cursor.moveToFirst())
+            id = Integer.parseInt(cursor.getString(0));
 
         ordersdatabase.close();
-     return id;
+        return id;
     }
 
-    public void Searching(String pos)
-    {
+    public void Searching(String pos) {
         ordersdatabase = getWritableDatabase();
         ContentValues newValues = new ContentValues();
         newValues.put("status", "completed");
-int p=Integer.parseInt(pos);
-        ordersdatabase.update("orders", newValues, "id"+"="+p, null);
+        int p = Integer.parseInt(pos);
+        ordersdatabase.update("orders", newValues, "id" + "=" + p, null);
         ordersdatabase.close();
 
     }
-    public void UpdatingUser(int pos)
-    {
+
+    public void UpdatingUser(int pos) {
         ordersdatabase = getWritableDatabase();
         ContentValues newValues = new ContentValues();
         newValues.put("UserType", "AD");
-        ordersdatabase.update("user", newValues, "UserID"+"="+pos, null);
+        ordersdatabase.update("user", newValues, "UserID" + "=" + pos, null);
         ordersdatabase.close();
 
     }
-    public Cursor showhistoryorders(String username){
-      int id=  getUserId(username);
-      String type= GetUserType(username);
 
-      ordersdatabase=getReadableDatabase();
+    public Cursor showhistoryorders(String username) {
+        int id = getUserId(username);
+        String type = GetUserType(username);
+        ordersdatabase = getReadableDatabase();
         Cursor cursor;
-        if(type.equals("AD"))
-            cursor= ordersdatabase.rawQuery("select * from orders",null);
+        if (type.equals("AD"))
+            cursor = ordersdatabase.rawQuery("select * from orders", null);
         else
-            cursor= ordersdatabase.rawQuery("select * from orders where User_ID like ?", new String[]{String.valueOf(id)});
-        if(cursor != null)
+            cursor = ordersdatabase.rawQuery("select * from orders where User_ID like ?", new String[]{String.valueOf(id)});
+        if (cursor != null)
             cursor.moveToFirst();
         ordersdatabase.close();
-        return cursor;}
+        return cursor;
     }
+
+    public Cursor ShowAllUsers()
+    {
+        ordersdatabase = getReadableDatabase();
+        Cursor cursor=ordersdatabase.rawQuery("select UserName from user", new String[]{});
+        if (cursor != null)
+            cursor.moveToFirst();
+        ordersdatabase.close();
+        return cursor;
+    }
+    public void DeleteUser(String UserName)
+    {
+        ordersdatabase = getReadableDatabase();
+        ordersdatabase .delete("user", "UserName='" + UserName + "'", null);
+        ordersdatabase.close();
+    }
+}

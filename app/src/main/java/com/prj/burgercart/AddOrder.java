@@ -18,7 +18,7 @@ public class AddOrder extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_addneworder);
+        setContentView(R.layout.activity_add_neworder);
         final EditText status=(EditText) findViewById(R.id.status);
         status.setText("notcompleted");
         status.setEnabled(false);
