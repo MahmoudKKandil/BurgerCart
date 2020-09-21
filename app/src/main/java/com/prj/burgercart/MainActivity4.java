@@ -88,11 +88,9 @@ public class MainActivity4 extends AppCompatActivity {
                     date = cursor.getString(1);
                     order orr = new order(id, info, descrp, date);
 
-<<<<<<< Updated upstream
                     or.add(orr);
 
                 }while(cursor.moveToNext());
-=======
         Button viewOrders = (Button)findViewById(R.id.VObutton);
         final OrdersDB newOrder = new OrdersDB(this);
 
@@ -101,7 +99,6 @@ public class MainActivity4 extends AppCompatActivity {
             public void onClick(View v) {
                     Intent allOrders = new Intent(MainActivity4.this, showOrders.class);
                     startActivity(allOrders);
->>>>>>> Stashed changes
             }
             return true;
         }
