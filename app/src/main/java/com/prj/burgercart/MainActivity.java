@@ -35,8 +35,8 @@ public class MainActivity extends AppCompatActivity {
                    startActivity(inn);
                }
                if(((TextView) view).getText().toString().equals("History")) {
-                   Intent inn = new Intent(MainActivity.this, MainActivity4.class);
-                   startActivity(inn);
+              //     Intent inn = new Intent(MainActivity.this, MainActivity4.class);
+               //    startActivity(inn);
                }
            }
        }

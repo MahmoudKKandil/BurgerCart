@@ -1,12 +1,10 @@
 package com.prj.burgercart;
 
-import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,7 +18,7 @@ public class MainActivity2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_AddNewOrder);
+        setContentView(R.layout.activity_addneworder);
         final EditText status=(EditText) findViewById(R.id.status);
         status.setText("notcompleted");
         status.setEnabled(false);

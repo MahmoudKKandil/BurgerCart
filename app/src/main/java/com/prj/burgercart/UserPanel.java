@@ -14,7 +14,7 @@ public class UserPanel extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_UserPanel);
+        setContentView(R.layout.activity_userpanel);
         Button showorders=(Button)findViewById(R.id.userordersbutton);
         Button add=(Button)findViewById(R.id.addneworderbutton);
         showorders.setOnClickListener(new View.OnClickListener() {
