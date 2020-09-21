@@ -77,50 +77,54 @@ ordersdatabase=getReadableDatabase();
     }
     public boolean CheckingEmail(String Email) {
         ordersdatabase = getReadableDatabase();
-        Cursor cursor = ordersdatabase.rawQuery("select Email from user where Email like?",new String[]{Email});
-        boolean found=false;
-        if(cursor.getCount() != 0) {
-            found=true;
+        Cursor cursor = ordersdatabase.rawQuery("select Email from user where Email like?", new String[]{Email});
+        boolean found = false;
+        if (cursor.getCount() != 0) {
+            found = true;
             cursor.moveToFirst();
         }
-        if(cursor != null)
+        if (cursor != null)
             cursor.moveToFirst();
 
         ordersdatabase.close();
-      if(found)
-          return true;
-      else{return false;}
+        if (found)
+            return true;
+        else {
+            return false;
+        }
     }
     public boolean CheckingUserName(String UserName) {
         ordersdatabase = getReadableDatabase();
-        Cursor cursor = ordersdatabase.rawQuery("select UserName from user where UserName like?",new String[]{UserName});
+        Cursor cursor = ordersdatabase.rawQuery("select UserName from user where UserName like?", new String[]{UserName});
 
-        boolean found=false;
-        if(cursor.getCount() != 0) {
-            found=true;
+        boolean found = false;
+        if (cursor.getCount() != 0) {
+            found = true;
             cursor.moveToFirst();
         }
-        if(cursor != null)
+        if (cursor != null)
             cursor.moveToFirst();
-            ordersdatabase.close();
-        if(found)
+        ordersdatabase.close();
+        if (found)
             return true;
-        else{return false;}
+        else {
+            return false;
+        }
     }
     public String GetPassword(String UserName) {
-        String pass="";
+        String pass = "";
         ordersdatabase = getReadableDatabase();
-        Cursor cursor = ordersdatabase.rawQuery("select * from user where UserName like?",new String[]{UserName});
-                cursor.moveToFirst();
-        if( cursor != null && cursor.moveToFirst() ){
+        Cursor cursor = ordersdatabase.rawQuery("select * from user where UserName like?", new String[]{UserName});
+        cursor.moveToFirst();
+        if (cursor != null && cursor.moveToFirst()) {
 
-           pass=  cursor.getString(cursor.getColumnIndex("Password"));
+            pass = cursor.getString(cursor.getColumnIndex("Password"));
         }
-        if(cursor != null)
+        if (cursor != null)
             cursor.moveToFirst();
         ordersdatabase.close();
 
-  return  pass;
+        return pass;
     }
     public String GetUserType(String UserName) {
         ordersdatabase = getReadableDatabase();
@@ -138,19 +142,11 @@ ordersdatabase=getReadableDatabase();
     }
     public boolean CheckingPhone(String Phone) {
         ordersdatabase = getReadableDatabase();
-        Cursor cursor = ordersdatabase.rawQuery("select Phone from user where Phone like?",new String[]{Phone});
-        boolean found=false;
-        if(cursor.getCount() != 0) {
-            found=true;
-            cursor.moveToFirst();
-        }
-
-        if(cursor != null)
-            cursor.moveToFirst();
+        Cursor cursor = ordersdatabase.rawQuery("select count(*) from user where Phone like?",new String[]{Phone});
+        cursor.moveToFirst();
+       int count = cursor.getInt(0);
         ordersdatabase.close();
-        if(found)
-            return true;
-        else{return false;}
+        return count >0;
     }
     public int getUserId(String UserName) {
     int id;
@@ -177,7 +173,7 @@ int p=Integer.parseInt(pos);
         ordersdatabase = getWritableDatabase();
         ContentValues newValues = new ContentValues();
         newValues.put("UserType", "AD");
-        ordersdatabase.update("user", newValues, "id"+"="+pos, null);
+        ordersdatabase.update("user", newValues, "UserID"+"="+pos, null);
         ordersdatabase.close();
 
     }

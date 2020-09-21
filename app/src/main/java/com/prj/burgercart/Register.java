@@ -45,17 +45,17 @@ or.getDatabaseName();
             @Override
             public void onClick(View v) {
                 if (TextUtils.isEmpty(UserName.getText().toString()))
-                    UserName.setError("UserName cant be null ");
+                    UserName.setError("UserName can`t be null ");
                 if (TextUtils.isEmpty(Password.getText().toString()))
-                    Password.setError("Password cant be null ");
+                    Password.setError("Password can`t be null ");
                 if (TextUtils.isEmpty(ConfirmPassword.getText().toString()))
                     ConfirmPassword.setError("Please Re-Enter your password ");
                 if (TextUtils.isEmpty(Address.getText().toString()))
-                    Address.setError("Address cant be null ");
+                    Address.setError("Address can`t be null ");
                 if (TextUtils.isEmpty(Email.getText().toString()))
-                    Email.setError("Email cant be null ");
+                    Email.setError("Email can`t be null ");
                 if (TextUtils.isEmpty(Phone.getText().toString()))
-                    Phone.setError("Phone cant be null ");
+                    Phone.setError("Phone can`t be null ");
                 if (or.CheckingUserName(UserName.getText().toString()))
                     UserName.setError("This UserName is not available");
                 if (or.CheckingPhone(Phone.getText().toString()))
