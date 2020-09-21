@@ -9,33 +9,14 @@ import android.widget.Toast;
 public class OrdersDB extends SQLiteOpenHelper {
     private static String databaseName = "ordersDatabase";
     SQLiteDatabase ordersdatabase;
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-<<<<<<< Updated upstream
->>>>>>> parent of ecf9338... asdasd
+
    static int usedbefore=0;
-=======
    Context C;
->>>>>>> e11fa463b9a1fa48c33201234557dc52f866bfef
     public OrdersDB(Context context) {
-
-
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-<<<<<<< Updated upstream
->>>>>>> parent of ecf9338... asdasd
-        super(context,databaseName,null,1);  }
-    public void createneworder(int id, String time, String description, String details) {
-        usedbefore++;
-=======
         super(context,databaseName,null,1);
-        C=context;
     }
     public void CreateNewOrder(int id, String time, String description, String details, int UserID) {
 
->>>>>>> e11fa463b9a1fa48c33201234557dc52f866bfef
         ContentValues row = new ContentValues();
         row.put("id", id);
         row.put("time", time);
@@ -93,29 +74,8 @@ ordersdatabase=getReadableDatabase();
         ordersdatabase.close();
         return cursor;
     }
-<<<<<<< HEAD
-    public Cursor fetchAllOrders2() {
-        ordersdatabase = getReadableDatabase();
-        String [] rowDetails = {"id","time","description","details"};
-        Cursor cursor = ordersdatabase.rawQuery("select * from orders where status like?",new String[]{"completed"});
-        if(cursor != null)
-            cursor.moveToFirst();
-        ordersdatabase.close();
-        return cursor;
-    }
-<<<<<<< HEAD
-=======
-    public Cursor fetchAllOrders2() {
-        ordersdatabase = getReadableDatabase();
-        String [] rowDetails = {"id","time","description","details"};
-        Cursor cursor = ordersdatabase.rawQuery("select * from orders where status like?",new String[]{"completed"});
-        if(cursor != null)
-            cursor.moveToFirst();
-        ordersdatabase.close();
-        return cursor;
-    }
 
-=======
+
     public boolean CheckingEmail(String Email) {
         ordersdatabase = getReadableDatabase();
         Cursor cursor = ordersdatabase.rawQuery("select count(*) from user where Email like?",new String[]{Email});
@@ -176,8 +136,7 @@ ordersdatabase=getReadableDatabase();
         ordersdatabase.close();
      return id;
     }
->>>>>>> e11fa463b9a1fa48c33201234557dc52f866bfef
->>>>>>> parent of ecf9338... asdasd
+
     public void Searching(String pos)
     {
         ordersdatabase = getWritableDatabase();

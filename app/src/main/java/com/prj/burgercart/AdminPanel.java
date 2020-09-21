@@ -12,12 +12,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.R;
 
-public class MainActivity extends AppCompatActivity {
+public class AdminPanel extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_adminpanel);
         ListView mylist = (ListView)findViewById(R.id.listo);
         String[] myarr = getResources().getStringArray(R.array.list);
         ArrayAdapter<String> adapter= new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,myarr);
@@ -27,13 +27,13 @@ public class MainActivity extends AppCompatActivity {
            public void onItemClick(AdapterView<?> parent, View view, int i, long l) {
                TextView v=(TextView) view;
                if(((TextView) view).getText().toString().equals("Order")) {
-                   Intent inn = new Intent(MainActivity.this, AddOrder.class);
+                   Intent inn = new Intent(AdminPanel.this, AddOrder.class);
                    String username=getIntent().getStringExtra("username");
                    inn.putExtra("username",username);
                    startActivity(inn);
                }
                if(((TextView) view).getText().toString().equals("Waiting")) {
-                   Intent inn = new Intent(MainActivity.this, MainActivity3.class);
+                   Intent inn = new Intent(AdminPanel.this, MainActivity3.class);
                    startActivity(inn);
                }
                if(((TextView) view).getText().toString().equals("History")) {

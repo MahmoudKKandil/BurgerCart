@@ -14,13 +14,13 @@ public class UserPanel extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_userpanel);
+        setContentView(R.layout.activity_addneworder);
         Button showorders=(Button)findViewById(R.id.userordersbutton);
         Button add=(Button)findViewById(R.id.addneworderbutton);
         showorders.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent inn = new Intent(UserPanel.this, AllOrders.class);
+                Intent inn = new Intent(UserPanel.this, ViewOrders.class);
                 String username=getIntent().getStringExtra("username");
                 inn.putExtra("username",username);
                 startActivity(inn);

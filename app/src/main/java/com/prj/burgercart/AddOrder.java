@@ -41,7 +41,7 @@ public class AddOrder extends AppCompatActivity {
                 int userid=neworder.getUserId(username);
                 neworder.CreateNewOrder(Integer.parseInt(id.getText().toString()),formattedDate,description.getText().toString(),details.getText().toString(),userid);
 
-               if(neworder.GetUserType(username).toString().equals("AD")){ Intent inn = new Intent(AddOrder.this, MainActivity.class);
+               if(neworder.GetUserType(username).toString().equals("AD")){ Intent inn = new Intent(AddOrder.this, AdminPanel.class);
                    inn.putExtra("username",username);
                    startActivity(inn);}
                else{ Intent inn = new Intent(AddOrder.this, UserPanel.class);
