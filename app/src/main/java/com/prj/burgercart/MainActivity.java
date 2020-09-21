@@ -27,9 +27,7 @@ public class MainActivity extends AppCompatActivity {
            public void onItemClick(AdapterView<?> parent, View view, int i, long l) {
                TextView v=(TextView) view;
                if(((TextView) view).getText().toString().equals("Order")) {
-                   Intent inn = new Intent(MainActivity.this, AddOrder.class);
-                   String username=getIntent().getStringExtra("username");
-                   inn.putExtra("username",username);
+                   Intent inn = new Intent(MainActivity.this, MainActivity2.class);
                    startActivity(inn);
                }
                if(((TextView) view).getText().toString().equals("Waiting")) {
