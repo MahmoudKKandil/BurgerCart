@@ -66,7 +66,6 @@ static class layoutHandler
             }
         order ORDER=(order) this.getItem((position));
         lh.id.setText(ORDER.getId().toString());
-
         lh.date.setText(ORDER.getDate().toString());
         lh.info.setText(ORDER.getInfo().toString());
         lh.des.setText(ORDER.getDesc());
