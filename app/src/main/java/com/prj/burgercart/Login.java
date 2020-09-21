@@ -18,6 +18,7 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
        final  OrdersDB or=new OrdersDB(this);
+       or.GetUserType("t");
         final EditText UserName=(EditText) findViewById(R.id.un);
         final EditText Password=(EditText) findViewById(R.id.pt);
         final Button login=(Button)  findViewById(R.id.login);
