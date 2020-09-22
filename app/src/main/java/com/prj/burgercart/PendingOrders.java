@@ -1,6 +1,7 @@
 package com.prj.burgercart;
 
-import android.content.Intent;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -9,25 +10,21 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.myapplication.R;
 
-public class MainActivity4 extends AppCompatActivity {
+public class PendingOrders extends AppCompatActivity {
     ListView ordersList;
     orderAdapter or;
     OrdersDB orders;
-    String pos;
+String pos;
     String name,id,info,descrp,date;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main3);
+        setContentView(R.layout.activity_pendingorders);
         ordersList = (ListView)findViewById(R.id.listview11);
 
         ArrayAdapter<String> adapter= new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_list_item_1);
@@ -78,7 +75,7 @@ public class MainActivity4 extends AppCompatActivity {
             orders.Searching(pos);
             or = new orderAdapter(getApplicationContext(),R.layout.row_layout);
             ordersList.setAdapter(or);
-            Cursor cursor = orders.fetchAllOrders2();
+            Cursor cursor = orders.fetchAllOrders();
 
             if(cursor.moveToFirst()){
                 do {
