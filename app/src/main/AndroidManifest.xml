@@ -10,6 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name="com.prj.burgercart.EditUser"></activity>
+        <activity android:name="com.prj.burgercart.EditUserProfile"></activity>
+        <activity android:name="com.prj.burgercart.EditUser"></activity>
         <activity android:name="com.prj.burgercart.ViewOrders" />
         <activity android:name="com.prj.burgercart.UserPanel" />
         <activity android:name="com.prj.burgercart.AdminPanel" />

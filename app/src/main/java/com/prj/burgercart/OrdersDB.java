@@ -36,6 +36,14 @@ public class OrdersDB extends SQLiteOpenHelper {
         ordersdatabase = getReadableDatabase();
         Cursor cursor = ordersdatabase.rawQuery("SELECT *  FROM orders", null);
         cursor.moveToFirst();
+ordersdatabase=getReadableDatabase();
+        Cursor cursor= ordersdatabase.rawQuery("SELECT count(*)  FROM orders", null);
+        cursor.moveToFirst();
+        int count = cursor.getInt(0);
+        ordersdatabase.close();
+        ordersdatabase = getReadableDatabase();
+        Cursor cursor = ordersdatabase.rawQuery("SELECT *  FROM orders", null);
+        cursor.moveToFirst();
         int count = cursor.getCount() + 1;
         cursor.close();
         return count;
@@ -188,6 +196,78 @@ public class OrdersDB extends SQLiteOpenHelper {
             cursor.moveToFirst();
         ordersdatabase.close();
         return cursor;
+    }
+
+    public Cursor ShowAllUsers()
+    {
+        ordersdatabase = getReadableDatabase();
+        Cursor cursor=ordersdatabase.rawQuery("select UserName from user", new String[]{});
+        if (cursor != null)
+            cursor.moveToFirst();
+        ordersdatabase.close();
+        return cursor;
+    }
+
+    public Cursor ShowAllUsers()
+    {
+        ordersdatabase = getReadableDatabase();
+        Cursor cursor=ordersdatabase.rawQuery("select UserName from user", new String[]{});
+        if (cursor != null)
+            cursor.moveToFirst();
+        ordersdatabase.close();
+<<<<<<< HEAD
+        return cursor;}
+    public String Getemail(String UserName) {
+        String email = "";
+        ordersdatabase = getReadableDatabase();
+        Cursor cursor = ordersdatabase.rawQuery("select * from user where UserName like?", new String[]{UserName});
+        cursor.moveToFirst();
+        if (cursor != null && cursor.moveToFirst()) {
+
+            email = cursor.getString(cursor.getColumnIndex("Email"));
+        }
+
+        ordersdatabase.close();
+
+        return email;
+    }
+    public String GetAdress(String UserName) {
+        String address= "";
+        ordersdatabase = getReadableDatabase();
+        Cursor cursor = ordersdatabase.rawQuery("select * from user where UserName like?", new String[]{UserName});
+        cursor.moveToFirst();
+        if (cursor != null && cursor.moveToFirst()) {
+
+            address = cursor.getString(cursor.getColumnIndex("Address"));
+        }
+
+        ordersdatabase.close();
+
+        return address;
+    }
+    public void Updateuseremail(String newemail,String username){
+        ordersdatabase=getWritableDatabase();
+        ContentValues row = new ContentValues();
+        row.put("Email",newemail);
+        ordersdatabase.update("user",row,"UserName like",new String[]{username});
+        ordersdatabase.close();
+
+    }
+    public void Updateuseraddress(String newaddress,String username){
+        ordersdatabase=getWritableDatabase();
+        ContentValues row = new ContentValues();
+        row.put("Address",newaddress);
+        ordersdatabase.update("user",row,"UserName like",new String[]{username});
+        ordersdatabase.close();
+
+    }
+    public void Updateuserpassword(String newpassword,String username){
+        ordersdatabase=getWritableDatabase();
+        ContentValues row = new ContentValues();
+        row.put("Password",newpassword);
+        ordersdatabase.update("user",row,"UserName like",new String[]{username});
+        ordersdatabase.close();
+
     }
     public void DeleteUser(String UserName)
     {

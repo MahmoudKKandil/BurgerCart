@@ -14,7 +14,7 @@
         android:layout_marginLeft="6dp"
         android:layout_marginTop="195dp"
         android:layout_marginBottom="31dp"
-        android:text="Show All my orders"
+        android:text="@string/show_all_my_orders"
         app:layout_constraintBottom_toTopOf="@+id/addneworderbutton"
         app:layout_constraintStart_toStartOf="@+id/addneworderbutton"
         app:layout_constraintTop_toTopOf="parent" />
@@ -29,4 +29,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/userordersbutton" />
+
+    <Button
+        android:id="@+id/editprofilebutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit My Profile"
+        tools:layout_editor_absoluteX="143dp"
+        tools:layout_editor_absoluteY="372dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

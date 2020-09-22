@@ -17,6 +17,7 @@ public class UserPanel extends AppCompatActivity {
         setContentView(R.layout.activity_userpanel);
         Button showorders=(Button)findViewById(R.id.userordersbutton);
         Button add=(Button)findViewById(R.id.addneworderbutton);
+        Button edit=(Button)findViewById(R.id.editprofilebutton);
         showorders.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -30,6 +31,15 @@ public class UserPanel extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent inn = new Intent(UserPanel.this, AddOrder.class);
+                String username=getIntent().getStringExtra("username");
+                inn.putExtra("username",username);
+                startActivity(inn);
+            }
+        });
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent inn = new Intent(UserPanel.this, EditUserProfile.class);
                 String username=getIntent().getStringExtra("username");
                 inn.putExtra("username",username);
                 startActivity(inn);
