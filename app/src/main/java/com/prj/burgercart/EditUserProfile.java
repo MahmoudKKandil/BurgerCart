@@ -70,37 +70,37 @@ public class EditUserProfile extends AppCompatActivity {
         });
         savenewaddress.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {int count=0;
+            public void onClick(View v) {
                 if (TextUtils.isEmpty(thenewaddress.getText().toString()))
-                { thenewaddress.setError("adress can`t be null ");}
-                else count++;
-                if (thenewaddress.equals(oldaddress))
-                {thenewaddress.setError("Enter New Email ");}
-                else count++;
-                if(count==2){userdata.Updateuseraddress(thenewemail.getText().toString(),username);}
+                { thenewaddress.setError("adress can`t be null ");return;}
+
+                if (thenewaddress.getText().toString().equals(oldaddress))
+                {thenewaddress.setError("Enter New Email ");return;}
+
+               userdata.Updateuseraddress(thenewemail.getText().toString(),username);
             }
         });
         savepass.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) { int count=0;
+            public void onClick(View v) {
                 if (TextUtils.isEmpty(oldpasstext.getText().toString()))
-                   oldpasstext.setError("Password can`t be null ");
-                else count++;
+                { oldpasstext.setError("Password can`t be null ");return;}
+
                 if (TextUtils.isEmpty(confirmpasstext.getText().toString()))
-                    confirmpasstext.setError("Please Re-Enter your password ");
-                else count++;
+                {confirmpasstext.setError("Please Re-Enter your password ");return;}
+
                 if (TextUtils.isEmpty(newpasstext.getText().toString()))
-                    newpasstext.setError("Password can`t be null ");
-                else count++;
-                if(!oldpasstext.getText().toString().equals(oldpassword)) { oldpasstext.setError("wrong Password");}
-                else count++;
+                { newpasstext.setError("Password can`t be null ");return;}
+
+                if(!oldpasstext.getText().toString().equals(oldpassword)) { oldpasstext.setError("wrong Password");return;}
+
                 if(!newpasstext.getText().toString().trim().equals(confirmpasstext.getText().toString()))
-                    confirmpasstext.setError("Passwords do not match");
-                else count++;
+                {    confirmpasstext.setError("Passwords do not match");return;}
+
                 if(!Pass.matcher((newpasstext.getText().toString())).matches())
-                   newpasstext.setError("Password should contain at least 6 characters including at least( 1 lower case letter, 1 upper case letter, 1 digit ");
-                else count++;
-                if(count==6){userdata.Updateuserpassword(newpasstext.getText().toString(),username);}
+                {newpasstext.setError("Password should contain at least 6 characters including at least( 1 lower case letter, 1 upper case letter, 1 digit ");
+               return;}
+              userdata.Updateuserpassword(newpasstext.getText().toString(),username);
             }
         });
 
