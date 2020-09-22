@@ -33,19 +33,12 @@ public class OrdersDB extends SQLiteOpenHelper {
 
     public int getorderid() {
 
-        ordersdatabase = getReadableDatabase();
-        Cursor cursor = ordersdatabase.rawQuery("SELECT *  FROM orders", null);
-        cursor.moveToFirst();
+
 ordersdatabase=getReadableDatabase();
         Cursor cursor= ordersdatabase.rawQuery("SELECT count(*)  FROM orders", null);
         cursor.moveToFirst();
         int count = cursor.getInt(0);
         ordersdatabase.close();
-        ordersdatabase = getReadableDatabase();
-        Cursor cursor = ordersdatabase.rawQuery("SELECT *  FROM orders", null);
-        cursor.moveToFirst();
-        int count = cursor.getCount() + 1;
-        cursor.close();
         return count;
     }
 
@@ -173,7 +166,7 @@ ordersdatabase=getReadableDatabase();
 
     }
 
-    public Cursor showhistoryorders(String username) {
+    public Cursor ShowHistoryOrders(String username) {
         int id = getUserId(username);
         String type = GetUserType(username);
         ordersdatabase = getReadableDatabase();
@@ -188,15 +181,7 @@ ordersdatabase=getReadableDatabase();
         return cursor;
     }
 
-    public Cursor ShowAllUsers()
-    {
-        ordersdatabase = getReadableDatabase();
-        Cursor cursor=ordersdatabase.rawQuery("select UserName from user", new String[]{});
-        if (cursor != null)
-            cursor.moveToFirst();
-        ordersdatabase.close();
-        return cursor;
-    }
+
 
     public Cursor ShowAllUsers()
     {
@@ -208,16 +193,7 @@ ordersdatabase=getReadableDatabase();
         return cursor;
     }
 
-    public Cursor ShowAllUsers()
-    {
-        ordersdatabase = getReadableDatabase();
-        Cursor cursor=ordersdatabase.rawQuery("select UserName from user", new String[]{});
-        if (cursor != null)
-            cursor.moveToFirst();
-        ordersdatabase.close();
-<<<<<<< HEAD
-        return cursor;}
-    public String Getemail(String UserName) {
+    public String GetEmail(String UserName) {
         String email = "";
         ordersdatabase = getReadableDatabase();
         Cursor cursor = ordersdatabase.rawQuery("select * from user where UserName like?", new String[]{UserName});
@@ -249,7 +225,7 @@ ordersdatabase=getReadableDatabase();
         ordersdatabase=getWritableDatabase();
         ContentValues row = new ContentValues();
         row.put("Email",newemail);
-        ordersdatabase.update("user",row,"UserName like",new String[]{username});
+        ordersdatabase.update("user",row,"UserName like?",new String[]{username});
         ordersdatabase.close();
 
     }

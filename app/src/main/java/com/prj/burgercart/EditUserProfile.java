@@ -24,7 +24,7 @@ public class EditUserProfile extends AppCompatActivity {
         final  EditText thenewaddress=( EditText)findViewById(R.id.adressedittext);
         final String username=getIntent().getStringExtra("username");
          final OrdersDB userdata=new OrdersDB(this);
-        final String oldemail=userdata.Getemail(username).toString();
+        final String oldemail=userdata.GetEmail(username).toString();
         final String oldaddress=userdata.GetAdress(username).toString();
         final String oldpassword=userdata.GetPassword(username);
         final  EditText oldpasstext=( EditText)findViewById(R.id.oldpass);
@@ -45,20 +45,27 @@ public class EditUserProfile extends AppCompatActivity {
                 "$");
         savenewemail.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) { int count=0;
-                if (TextUtils.isEmpty(thenewemail.getText().toString()))
-                { thenewemail.setError("Email can`t be null ");}
-                else count++;
-                if (thenewemail.getText().toString().equals(oldemail))
-                {thenewemail.setError("Enter New Email ");}
-else count++;
-                if (userdata.CheckingEmail(thenewemail.getText().toString()))
-                {thenewemail.setError("This Email is already registered");}
-                else count++;
-                if (!Patterns.EMAIL_ADDRESS.matcher(thenewemail.getText().toString().trim()).matches())
+            public void onClick(View v) {
+                if (TextUtils.isEmpty(thenewemail.getText().toString())) {
+                    thenewemail.setError("Email can`t be null ");
+                    return;
+                }
+
+                if (thenewemail.getText().toString().equals(oldemail)) {
+                    thenewemail.setError("Enter New Email ");
+                    return;
+                }
+
+                if (userdata.CheckingEmail(thenewemail.getText().toString())) {
+                    thenewemail.setError("This Email is already registered");
+                    return;
+                }
+
+                if (!Patterns.EMAIL_ADDRESS.matcher(thenewemail.getText().toString().trim()).matches()) {
                     thenewemail.setError("Please Enter a valid Email");
-                else count++;
-if(count==4){userdata.Updateuseremail(thenewemail.getText().toString(),username);}
+                    return;
+                }
+                userdata.Updateuseremail(thenewemail.getText().toString(), username);
             }
         });
         savenewaddress.setOnClickListener(new View.OnClickListener() {

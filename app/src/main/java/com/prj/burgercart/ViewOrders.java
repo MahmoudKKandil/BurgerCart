@@ -20,7 +20,7 @@ public class ViewOrders extends AppCompatActivity {
         list.setAdapter(listadapter);
         OrdersDB h = new OrdersDB(this);
         String username = getIntent().getStringExtra("username");
-        Cursor cursor = h.showhistoryorders(username);
+        Cursor cursor = h.ShowHistoryOrders(username);
 
         if (cursor != null && cursor.getCount() > 0) {
             cursor.moveToFirst();
