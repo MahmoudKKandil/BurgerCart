@@ -233,7 +233,7 @@ ordersdatabase=getReadableDatabase();
         ordersdatabase=getWritableDatabase();
         ContentValues row = new ContentValues();
         row.put("Address",newaddress);
-        ordersdatabase.update("user",row,"UserName like",new String[]{username});
+        ordersdatabase.update("user",row,"UserName like?",new String[]{username});
         ordersdatabase.close();
 
     }
@@ -241,7 +241,7 @@ ordersdatabase=getReadableDatabase();
         ordersdatabase=getWritableDatabase();
         ContentValues row = new ContentValues();
         row.put("Password",newpassword);
-        ordersdatabase.update("user",row,"UserName like",new String[]{username});
+        ordersdatabase.update("user",row,"UserName like?",new String[]{username});
         ordersdatabase.close();
 
     }
