@@ -13,7 +13,7 @@ import com.example.myapplication.R;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-class AddOrder extends AppCompatActivity {
+public class AddOrder extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
