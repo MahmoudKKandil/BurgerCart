@@ -1,6 +1,7 @@
 package com.prj.burgercart;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -8,6 +9,8 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.example.myapplication.R;
@@ -23,7 +26,39 @@ public class EditUserProfile extends AppCompatActivity {
         final EditText thenewemail=( EditText)findViewById(R.id.emaileditText);
         final  EditText thenewaddress=( EditText)findViewById(R.id.adressedittext);
         final String username=getIntent().getStringExtra("username");
-         final OrdersDB userdata=new OrdersDB(this);
+       final String UserLoggedIn=getIntent().getStringExtra("UserLoggedIn");
+        final OrdersDB userdata=new OrdersDB(this);
+        RadioGroup rg=(RadioGroup) findViewById(R.id.rg);
+       final RadioButton r1=(RadioButton)findViewById(R.id.radioButton);
+      final  RadioButton r2=(RadioButton)findViewById(R.id.radioButton2);
+        TextView UserType =(TextView) findViewById(R.id.textView3);
+
+        if(userdata.GetUserType(UserLoggedIn).equals("NU"))
+        {
+            UserType.setVisibility(View.INVISIBLE);
+            r1.setVisibility(View.INVISIBLE);
+            r2.setVisibility(View.INVISIBLE);
+            rg.setVisibility(View.INVISIBLE);
+        }
+else
+    {
+                if(userdata.GetUserType(username).equals("NU"))
+                r1.setChecked(true);
+             if(userdata.GetUserType(username).equals("AD"))
+            r2.setChecked(true);
+
+    }
+        rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
+        {
+            int id=userdata.getUserId(username);
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+             if(checkedId==r1.getId())
+                 userdata.UpdatingUser2(id);
+                if(checkedId==r2.getId())
+                    userdata.UpdatingUser(id);
+            }
+        });
         final String oldemail=userdata.GetEmail(username).toString();
         final String oldaddress=userdata.GetAdress(username).toString();
         final String oldpassword=userdata.GetPassword(username);

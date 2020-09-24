@@ -9,7 +9,7 @@
 
         android:id="@+id/Show"
 
-        android:title="show" />
+        android:title="Show orders" />
     <item
 
         android:id="@+id/Delete"

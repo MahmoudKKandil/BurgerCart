@@ -66,8 +66,10 @@ public class EditUser extends AppCompatActivity {
         }
         if(item.getItemId()==R.id.EditUserMenu)
         {
-            Intent inn = new Intent(EditUser.this, AddOrder.class);
+            Intent inn = new Intent(EditUser.this, EditUserProfile.class);
             inn.putExtra("username",UserName);
+            String UserLoggedIn=getIntent().getStringExtra("UserLoggedIn");
+            inn.putExtra("UserLoggedIn",UserLoggedIn);
             startActivity(inn);
             return true;
 

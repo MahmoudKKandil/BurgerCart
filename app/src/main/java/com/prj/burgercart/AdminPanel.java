@@ -38,6 +38,8 @@ public class AdminPanel extends AppCompatActivity {
                }
                if(((TextView) view).getText().toString().equals("Users")) {
                    Intent inn = new Intent(AdminPanel.this, EditUser.class);
+                   String UserLoggedIn=getIntent().getStringExtra("username");
+                   inn.putExtra("UserLoggedIn",UserLoggedIn);
                    startActivity(inn);
                }
                if(((TextView) view).getText().toString().equals("History")) {

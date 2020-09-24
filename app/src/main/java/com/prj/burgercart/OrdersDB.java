@@ -157,11 +157,19 @@ ordersdatabase=getReadableDatabase();
 
     }
 
-    public void UpdatingUser(int pos) {
+    public void UpdatingUser(int id) {
         ordersdatabase = getWritableDatabase();
         ContentValues newValues = new ContentValues();
         newValues.put("UserType", "AD");
-        ordersdatabase.update("user", newValues, "UserID" + "=" + pos, null);
+        ordersdatabase.update("user", newValues, "UserID" + "=" + id, null);
+        ordersdatabase.close();
+
+    }
+    public void UpdatingUser2(int id) {
+        ordersdatabase = getWritableDatabase();
+        ContentValues newValues = new ContentValues();
+        newValues.put("UserType", "NU");
+        ordersdatabase.update("user", newValues, "UserID" + "=" + id, null);
         ordersdatabase.close();
 
     }

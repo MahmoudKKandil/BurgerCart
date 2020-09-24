@@ -26,8 +26,8 @@
         android:id="@+id/saveemailbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="29dp"
-        android:layout_marginRight="29dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:layout_marginBottom="57dp"
         android:text="Change Email"
         app:layout_constraintBottom_toTopOf="@+id/adressedittext"
@@ -38,8 +38,8 @@
         android:id="@+id/saveadressbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="45dp"
-        android:layout_marginRight="45dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginRight="52dp"
         android:layout_marginBottom="66dp"
         android:text="Change Address"
         app:layout_constraintBottom_toTopOf="@+id/oldpass"
@@ -103,12 +103,57 @@
         app:layout_constraintEnd_toEndOf="@+id/confirmpass"
         app:layout_constraintTop_toBottomOf="@+id/confirmpass" />
 
+    <RadioGroup
+        android:id="@+id/rg"
+        android:layout_width="221dp"
+        android:layout_height="67dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.726"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.518">
+
+        <RadioButton
+            android:id="@+id/radioButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="1dp"
+            android:layout_marginRight="1dp"
+            android:text="Admin" />
+
+        <RadioButton
+            android:id="@+id/radioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="1dp"
+            android:layout_marginRight="20dp"
+
+            android:text="Normal User" />
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="19dp"
+        android:text="User Type"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.117"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.514" />
+
+
     <EditText
         android:id="@+id/oldpass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="7dp"
-        android:layout_marginRight="7dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:layout_marginBottom="35dp"
         android:ems="10"
         android:hint="password"
@@ -147,5 +192,7 @@
         app:layout_constraintBottom_toTopOf="@+id/confirmpass"
         app:layout_constraintStart_toStartOf="@+id/confirmpass"
         app:layout_constraintTop_toBottomOf="@+id/oldpass" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

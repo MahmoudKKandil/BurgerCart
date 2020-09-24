@@ -41,6 +41,7 @@ public class UserPanel extends AppCompatActivity {
             public void onClick(View v) {
                 Intent inn = new Intent(UserPanel.this, EditUserProfile.class);
                 String username=getIntent().getStringExtra("username");
+                inn.putExtra("UserLoggedIn",username);
                 inn.putExtra("username",username);
                 startActivity(inn);
             }
