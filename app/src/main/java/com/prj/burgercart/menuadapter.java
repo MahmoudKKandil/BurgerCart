@@ -1,12 +1,14 @@
 package com.prj.burgercart;
 
 import android.content.Context;
+import android.os.Debug;
 import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -23,7 +25,7 @@ public class menuadapter extends ArrayAdapter {
         super(con,resource);
     }
 
-    public void add(String or) {
+    public void AddItem(MenuItem or) {
         list.add(or);
         super.add(or);
 
@@ -43,14 +45,16 @@ public class menuadapter extends ArrayAdapter {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        View row=convertView;
-            LayoutInflater lf=(LayoutInflater) this.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            row=lf.inflate(R.layout.menuitem,parent,false);
-            TextView title =(TextView)row.findViewById(R.id.title);
+        LayoutInflater lf = (LayoutInflater) this.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        convertView = lf.inflate(R.layout.menuitem, parent, false);
+        TextView title = (TextView) convertView.findViewById(R.id.txt_title);
+        TextView price = (TextView) convertView.findViewById(R.id.txt_price);
 
 
-        String ORDER= (String)this.getItem((position));
-        title.setText(ORDER.toString());
-        return row;
+        MenuItem item = (MenuItem) this.getItem((position));
+
+        title.setText(item.Title);
+        price.setText(String.valueOf(item.Price));
+        return convertView;
     }
 }

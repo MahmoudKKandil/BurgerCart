@@ -16,9 +16,9 @@ public class Menu extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
         GridView grid_menu = (GridView)findViewById(R.id.grd_menu);
         menuadapter menuAdapter = new menuadapter(getApplicationContext(),R.layout.menuitem);
-        menuAdapter.add("juicy lucy");
-        menuAdapter.add("world war");
-        menuAdapter.add("juicy lucy");
+        menuAdapter.AddItem(new MenuItem(10,50,"jucylucy"));
+        menuAdapter.AddItem(new MenuItem(10,50,"jucylucy"));
+        menuAdapter.AddItem(new MenuItem(10,50,"jucylucy"));
 
         grid_menu.setAdapter(menuAdapter);
 
