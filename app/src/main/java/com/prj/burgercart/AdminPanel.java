@@ -27,7 +27,7 @@ public class AdminPanel extends AppCompatActivity {
            public void onItemClick(AdapterView<?> parent, View view, int i, long l) {
                TextView v=(TextView) view;
                if(((TextView) view).getText().toString().equals("Order")) {
-                   Intent inn = new Intent(AdminPanel.this, AddOrder.class);
+                   Intent inn = new Intent(AdminPanel.this, Menu.class);
                    String username=getIntent().getStringExtra("username");
                    inn.putExtra("username",username);
                    startActivity(inn);
