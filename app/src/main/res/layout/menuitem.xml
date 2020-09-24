@@ -4,25 +4,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayout"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
-
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="130dp"
-        android:layout_height="28dp"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img" />
+    android:layout_height="wrap_content"
+    android:background="#00BCD4">
 
     <ImageView
-        android:id="@+id/img"
+        android:id="@+id/menu_img"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@mipmap/ic_launcher"
         android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars"
-        tools:visibility="visible" />
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/txt_price"
+        android:layout_width="101dp"
+        android:layout_height="24dp"
+        android:text="Price"
+        app:layout_constraintStart_toEndOf="@+id/menu_img"
+        app:layout_constraintTop_toBottomOf="@+id/txt_title" />
+
+    <TextView
+        android:id="@+id/txt_title"
+        android:layout_width="99dp"
+        android:layout_height="25dp"
+        android:text="title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/menu_img"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_add"
+        android:layout_width="47dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="54dp"
+        android:layout_marginLeft="54dp"
+        android:text="+"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/menu_img"
+        app:layout_constraintTop_toBottomOf="@+id/txt_price" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
