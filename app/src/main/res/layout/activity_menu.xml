@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     tools:context="com.prj.burgercart.Menu">
 
+    r
+
     <GridView
         android:id="@+id/grd_menu"
         android:layout_width="0dp"
@@ -16,7 +18,9 @@
         android:layout_marginEnd="1dp"
         android:layout_marginRight="1dp"
         android:layout_marginBottom="1dp"
-        android:numColumns="auto_fit"
+        android:background="#8ED3DC"
+        android:gravity="center"
+        android:numColumns="1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

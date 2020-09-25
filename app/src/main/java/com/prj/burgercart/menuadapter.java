@@ -49,12 +49,14 @@ public class menuadapter extends ArrayAdapter {
         convertView = lf.inflate(R.layout.menuitem, parent, false);
         TextView title = (TextView) convertView.findViewById(R.id.txt_title);
         TextView price = (TextView) convertView.findViewById(R.id.txt_price);
+        TextView description = (TextView) convertView.findViewById(R.id.txt_description);
 
 
         MenuItem item = (MenuItem) this.getItem((position));
 
         title.setText(item.Title);
         price.setText(String.valueOf(item.Price));
+        description.setText(item.Description);
         return convertView;
     }
 }
