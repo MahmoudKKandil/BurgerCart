@@ -45,7 +45,7 @@ ordersdatabase=getReadableDatabase();
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table orders(id integer primary key autoincrement," +
-                "time text not null, description text not null,details,status text not null, User_ID integer, FOREIGN KEY(User_ID) REFERENCES orders (UserID) )");
+                "time text not null, description text not null,details,status text not null, User_ID integer, FOREIGN KEY(User_ID) REFERENCES user (UserID) )");
         db.execSQL("create table user" + "(UserID integer primary key autoincrement, UserName text UNIQUE not null, Password text not null, Phone text UNIQUE not null, Email text UNIQUE not null, Address text not null,UserType text default 'NU') ");
 
 
