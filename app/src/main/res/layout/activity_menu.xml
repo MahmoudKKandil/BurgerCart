@@ -6,8 +6,6 @@
     android:layout_height="match_parent"
     tools:context="com.prj.burgercart.Menu">
 
-    r
-
     <GridView
         android:id="@+id/grd_menu"
         android:layout_width="0dp"

@@ -18,7 +18,7 @@ public class Menu extends AppCompatActivity {
         menuadapter menuAdapter = new menuadapter(getApplicationContext(),R.layout.menuitem);
         menuAdapter.AddItem(new MenuItem(10,50,"jucylucy","210 gram burger - tomatos"));
         menuAdapter.AddItem(new MenuItem(10,50,"World war","210 gram burger - tomatos -mozarilla sticks -  beacon - ay 7aga w bta3 "));
-        menuAdapter.AddItem(new MenuItem(10,50,"jucylucy",""));
+        menuAdapter.AddItem(new MenuItem(10,50,"jucylucy"," "));
 
         grid_menu.setAdapter(menuAdapter);
 
