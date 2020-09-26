@@ -43,7 +43,7 @@ public class AdminPanel extends AppCompatActivity {
                    startActivity(inn);
                }
                if(((TextView) view).getText().toString().equals("History")) {
-                   Intent inn = new Intent(AdminPanel.this, OrderItems.class);
+                   Intent inn = new Intent(AdminPanel.this, ViewOrders.class);
                    String username=getIntent().getStringExtra("username");
                    inn.putExtra("username",username);
                    startActivity(inn);
