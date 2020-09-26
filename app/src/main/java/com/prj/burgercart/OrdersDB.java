@@ -60,7 +60,16 @@ public class OrdersDB extends SQLiteOpenHelper {
         db.execSQL("create table menu (ItemID integer primary key autoincrement,Name text UNIQUE not null, Description text,Price integer)");
         db.execSQL("create table order_items(Order_id intger,Item_ID integer,Quantity integer,FOREIGN KEY(Item_ID) REFERENCES menu(itemID),FOREIGN KEY(order_ID) REFERENCES orders(id))");
     }
+public Cursor LoadOrderItems(int orderID)
+{
+    ordersdatabase = getReadableDatabase();
 
+    Cursor cursor = ordersdatabase.rawQuery(" select menu.ItemID, menu.Name, menu.Description, menu.Price from " + "orders" + " inner join " + "order_items" + " on " + "order_items.Order_id" + " = " + "orders.id" + " inner join " + "menu" + " on " + "order_items.Item_ID" + " = " + "menu.ItemID" +" where order_items.Order_id like?", new String[]{String.valueOf(orderID)});
+    if (cursor != null)
+        cursor.moveToFirst();
+    ordersdatabase.close();
+    return cursor;
+}
     public void createNewUser(String Name, String pass, String phone, String Email, String Address) {
         ContentValues row = new ContentValues();
         row.put("UserName", Name);
@@ -86,6 +95,8 @@ public class OrdersDB extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("drop table if exists orders");
         db.execSQL("drop table if exists user");
+        db.execSQL("drop table if exists menu");
+        db.execSQL("drop table if exists order_items");
         onCreate(db);
     }
 
