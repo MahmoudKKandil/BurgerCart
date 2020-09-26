@@ -9,33 +9,44 @@ public class OrdersDB extends SQLiteOpenHelper {
     private static String databaseName = "ordersDatabase";
     SQLiteDatabase ordersdatabase;
 
-    static int usedbefore = 0;
     Context C;
 
     public OrdersDB(Context context) {
         super(context, databaseName, null, 1);
     }
 
-    public void CreateNewOrder(int id, String time, String description, String details, int UserID) {
+
+
+    public int CreateNewOrder(String time, String description, String details, int UserID) {
 
         ContentValues row = new ContentValues();
-        row.put("id", id);
+
         row.put("time", time);
         row.put("description", description);
         row.put("details", details);
         row.put("status", "notcompleted");
         row.put("User_ID", UserID);
         ordersdatabase = getWritableDatabase();
-        ordersdatabase.insert("orders", null, row);
+        long id = ordersdatabase.insert("orders", null, row);
         ordersdatabase.close();
-
+        return (int) id;
     }
+    public  void CreateOrderItems(int OrderID,int ItemID,int quantity){
+        ContentValues itemrow = new ContentValues();
+        itemrow.put("Order_id",OrderID);
+        itemrow.put("Item_ID",ItemID);
+        itemrow.put("Quantity",quantity);
+        ordersdatabase = getWritableDatabase();
+        ordersdatabase.insert("order_items", null, itemrow);
+        ordersdatabase.close();
+    }
+
 
     public int getorderid() {
 
 
-ordersdatabase=getReadableDatabase();
-        Cursor cursor= ordersdatabase.rawQuery("SELECT count(*)  FROM orders", null);
+        ordersdatabase = getReadableDatabase();
+        Cursor cursor = ordersdatabase.rawQuery("SELECT count(*)  FROM orders", null);
         cursor.moveToFirst();
         int count = cursor.getInt(0);
         ordersdatabase.close();
@@ -45,10 +56,10 @@ ordersdatabase=getReadableDatabase();
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table orders(id integer primary key autoincrement," +
-                "time text not null, description text not null,details,status text not null, User_ID integer, FOREIGN KEY(User_ID) REFERENCES orders (UserID) )");
+                "time text not null, details text not null,status text not null, User_ID integer, FOREIGN KEY(User_ID) REFERENCES user (UserID) )");
         db.execSQL("create table user" + "(UserID integer primary key autoincrement, UserName text UNIQUE not null, Password text not null, Phone text UNIQUE not null, Email text UNIQUE not null, Address text not null,UserType text default 'NU') ");
-
-
+        db.execSQL("create table menu (ItemID integer primary key autoincrement,Name text UNIQUE not null, Description text,Price integer)");
+        db.execSQL("create table order_items(Order_id intger,Item_ID integer,Quantity integer,FOREIGN KEY(Item_ID) REFERENCES menu(itemID),FOREIGN KEY(order_ID) REFERENCES orders(id))");
     }
 
     public void createNewUser(String Name, String pass, String phone, String Email, String Address) {
@@ -60,6 +71,15 @@ ordersdatabase=getReadableDatabase();
         row.put("Address", Address);
         ordersdatabase = getWritableDatabase();
         ordersdatabase.insert("user", null, row);
+        ordersdatabase.close();
+    }
+    public void CreateNewMenuItem(String Name, String Description, int Price) {
+        ContentValues row = new ContentValues();
+        row.put("Name", Name);
+        row.put("Description", Description);
+        row.put("Price", Price);
+        ordersdatabase = getWritableDatabase();
+        ordersdatabase.insert("menu", null, row);
         ordersdatabase.close();
     }
 
