@@ -56,6 +56,7 @@ public class OrdersDB extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table orders(id integer primary key autoincrement," +
+<<<<<<< HEAD
                 "time text not null, details text not null,status text not null, User_ID integer, FOREIGN KEY(User_ID) REFERENCES user (UserID) )");
 =======
                 "time text not null, description text not null,details,status text not null, User_ID integer, FOREIGN KEY(User_ID) REFERENCES user (UserID) )");
