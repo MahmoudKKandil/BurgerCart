@@ -55,12 +55,7 @@ public class OrdersDB extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table orders(id integer primary key autoincrement," +
-<<<<<<< HEAD
-                "time text not null, details text not null,status text not null, User_ID integer, FOREIGN KEY(User_ID) REFERENCES user (UserID) )");
-=======
-                "time text not null, description text not null,details,status text not null, User_ID integer, FOREIGN KEY(User_ID) REFERENCES user (UserID) )");
->>>>>>> 21326655cfe972fc4edc427feaf50a639e471eaf
+        db.execSQL("create table orders(id integer primary key autoincrement," + "time text not null, description text not null,details,status text not null, User_ID integer, FOREIGN KEY(User_ID) REFERENCES user (UserID) )");
         db.execSQL("create table user" + "(UserID integer primary key autoincrement, UserName text UNIQUE not null, Password text not null, Phone text UNIQUE not null, Email text UNIQUE not null, Address text not null,UserType text default 'NU') ");
         db.execSQL("create table menu (ItemID integer primary key autoincrement,Name text UNIQUE not null, Description text,Price integer)");
         db.execSQL("create table order_items(Order_id intger,Item_ID integer,Quantity integer,FOREIGN KEY(Item_ID) REFERENCES menu(itemID),FOREIGN KEY(order_ID) REFERENCES orders(id))");
