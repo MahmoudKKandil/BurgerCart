@@ -26,9 +26,6 @@ String pos;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pendingorders);
         ordersList = (ListView)findViewById(R.id.listview11);
-
-        ArrayAdapter<String> adapter= new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_list_item_1);
-
         orders = new OrdersDB(getApplicationContext());
         or = new orderAdapter(getApplicationContext(),R.layout.row_layout);
         ordersList.setAdapter(or);
