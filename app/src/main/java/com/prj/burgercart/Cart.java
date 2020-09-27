@@ -29,24 +29,21 @@ public class Cart {
         }
 
     }
-    public void EndAddingToCart(String orderdescription, String ordersdetails, String Username, Context context ){
 
-           OrdersDB neworder=new OrdersDB(context);
-        int UserID=neworder.getUserId(Username);
+    public void EndAddingToCart(String orderdescription, String ordersdetails, String Username, Context context) {
+
+        OrdersDB neworder = new OrdersDB(context);
+        int UserID = neworder.getUserId(Username);
         Calendar c = Calendar.getInstance();
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         final String formattedDate = df.format(c.getTime());
-       int OrderID= neworder.CreateNewOrder(formattedDate,orderdescription,ordersdetails,UserID);
-        Iterator<Map.Entry<Integer, MenuItem>> it = AllOrderItems.entrySet().iterator();
-        while (it.hasNext()) {
-            Map.Entry<Integer, MenuItem> set = (Map.Entry<Integer, MenuItem>) it.next();
-            System.out.println(set.getKey() + " = " + set.getValue());
-            neworder.CreateOrderItems(OrderID,set.getValue().ID,set.getValue().Quantity);
+        int OrderID = neworder.CreateNewOrder(formattedDate, orderdescription, ordersdetails, UserID);
+        for (MenuItem item : AllOrderItems.values()) {
+            neworder.CreateOrderItems(OrderID, item.ID, item.Quantity);
         }
-
-
     }
-
 }
+
+
 
 
