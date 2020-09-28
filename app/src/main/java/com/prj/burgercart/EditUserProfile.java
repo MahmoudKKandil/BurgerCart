@@ -32,17 +32,19 @@ public class EditUserProfile extends AppCompatActivity {
         final RadioButton r1 = (RadioButton) findViewById(R.id.radioButton);
         final RadioButton r2 = (RadioButton) findViewById(R.id.radioButton2);
         TextView UserType = (TextView) findViewById(R.id.textView3);
-
+        final EditText oldpasstext = (EditText) findViewById(R.id.oldpass);
         if (userdata.GetUserType(UserLoggedIn).equals("NU")) {
             UserType.setVisibility(View.INVISIBLE);
             r1.setVisibility(View.INVISIBLE);
             r2.setVisibility(View.INVISIBLE);
             rg.setVisibility(View.INVISIBLE);
         } else {
+            oldpasstext.setVisibility(View.INVISIBLE);
             if (userdata.GetUserType(username).equals("NU"))
                 r1.setChecked(true);
             if (userdata.GetUserType(username).equals("AD"))
                 r2.setChecked(true);
+
 
         }
         rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -59,7 +61,6 @@ public class EditUserProfile extends AppCompatActivity {
         final String oldemail = userdata.GetEmail(username).toString();
         final String oldaddress = userdata.GetAdress(username).toString();
         final String oldpassword = userdata.GetPassword(username);
-        final EditText oldpasstext = (EditText) findViewById(R.id.oldpass);
         final EditText newpasstext = (EditText) findViewById(R.id.newpasseditbox);
         final EditText confirmpasstext = (EditText) findViewById(R.id.confirmpass);
         thenewemail.setText(oldemail);
@@ -133,10 +134,11 @@ public class EditUserProfile extends AppCompatActivity {
                     newpasstext.setError("Password can`t be null ");
                     return;
                 }
-
-                if (!oldpasstext.getText().toString().equals(oldpassword)) {
-                    oldpasstext.setError("wrong Password");
-                    return;
+                if (userdata.GetUserType(UserLoggedIn).equals("NU")) {
+                    if (!oldpasstext.getText().toString().equals(oldpassword)) {
+                        oldpasstext.setError("wrong Password");
+                        return;
+                    }
                 }
 
                 if (!newpasstext.getText().toString().trim().equals(confirmpasstext.getText().toString())) {
