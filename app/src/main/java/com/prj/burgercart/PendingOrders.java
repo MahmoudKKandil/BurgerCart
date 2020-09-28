@@ -2,6 +2,8 @@ package com.prj.burgercart;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -84,6 +86,13 @@ String pos;
 
                 }while(cursor.moveToNext());
             }
+            return true;
+        }
+        if(item.getItemId()==R.id.fh)
+        {
+            Intent inn=new Intent(PendingOrders.this,OrderItems.class);
+            inn.putExtra("OrderID",pos);
+            startActivity(inn);
             return true;
         }
         return false;

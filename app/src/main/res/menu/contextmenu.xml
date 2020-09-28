@@ -5,4 +5,9 @@
         android:id="@+id/farah"
 
         android:title="Completed" />
+    <item
+
+        android:id="@+id/fh"
+
+        android:title="Completed" />
 </menu>

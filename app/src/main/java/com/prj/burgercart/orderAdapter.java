@@ -58,14 +58,7 @@ public class orderAdapter extends ArrayAdapter {
        id.setText(ORDER.getId().toString());
         date.setText(ORDER.getDate().toString());
        info.setText(ORDER.getInfo().toString());
-        row.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent inn = new Intent(con, OrderItems.class);
-                inn.putExtra("OrderID",ORDER.getId());
-                con.startActivity(inn);
-            }
-        });
+      
         return row;
     }
 }
