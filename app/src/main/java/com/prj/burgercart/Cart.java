@@ -30,14 +30,14 @@ public class Cart {
 
     }
 
-    public void EndAddingToCart(String orderdescription, String ordersdetails, String Username, Context context) {
+    public void EndAddingToCart( String ordersdetails, String Username, Context context) {
 
         OrdersDB neworder = new OrdersDB(context);
         int UserID = neworder.getUserId(Username);
         Calendar c = Calendar.getInstance();
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         final String formattedDate = df.format(c.getTime());
-        int OrderID = neworder.CreateNewOrder(formattedDate, orderdescription, ordersdetails, UserID);
+        int OrderID = neworder.CreateNewOrder(formattedDate, ordersdetails, UserID);
         for (MenuItem item : AllOrderItems.values()) {
             neworder.CreateOrderItems(OrderID, item.ID, item.Quantity);
         }

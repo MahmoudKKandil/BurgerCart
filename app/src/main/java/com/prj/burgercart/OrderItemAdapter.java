@@ -50,7 +50,7 @@ public class OrderItemAdapter  extends ArrayAdapter {
         TextView description = (TextView) convertView.findViewById(R.id.description);
         MenuItem item = (MenuItem) this.getItem((position));
         title.setText(item.Title);
-        price.setText(String.valueOf(item.Price+" LE"));
+        price.setText(String.valueOf(item.Quantity+"X"+item.Price+" LE"));
         description.setText(item.Description);
         return convertView;
     }
