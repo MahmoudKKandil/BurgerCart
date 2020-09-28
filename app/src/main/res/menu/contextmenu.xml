@@ -9,5 +9,5 @@
 
         android:id="@+id/fh"
 
-        android:title="Completed" />
+        android:title="Show Items" />
 </menu>
