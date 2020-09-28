@@ -52,14 +52,12 @@ public class orderAdapter extends ArrayAdapter {
             row = lf.inflate(R.layout.row_layout, parent, false);
             TextView  id = (TextView) row.findViewById(R.id.orderId);
             TextView  date = (TextView) row.findViewById(R.id.orderdate);
-            TextView  des = (TextView) row.findViewById(R.id.ordedesc);
             TextView   info = (TextView) row.findViewById(R.id.orderinfo);
 
         final order ORDER = (order) this.getItem((position));
        id.setText(ORDER.getId().toString());
         date.setText(ORDER.getDate().toString());
        info.setText(ORDER.getInfo().toString());
-        des.setText(ORDER.getDesc());
         row.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

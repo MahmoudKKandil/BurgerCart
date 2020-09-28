@@ -28,17 +28,6 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/ordedesc"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="Description"
-        android:textColor="#010101"
-        android:textStyle="bold" />
-
-    <TextView
         android:id="@+id/orderdate"
         android:layout_width="100dp"
         android:layout_height="wrap_content"

@@ -19,7 +19,6 @@
         <activity android:name="com.prj.burgercart.AdminPanel" />
         <activity android:name="com.prj.burgercart.Register" />
         <activity android:name="com.prj.burgercart.PendingOrders" />
-        <activity android:name="com.prj.burgercart.AddOrder" />
         <activity android:name="com.prj.burgercart.Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

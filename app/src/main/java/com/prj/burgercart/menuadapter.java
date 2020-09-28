@@ -22,10 +22,12 @@ import java.util.List;
 
 public class menuadapter extends ArrayAdapter {
     ArrayList list=new ArrayList();
-Cart Cart;
-    public menuadapter(Context con,int resource,Cart cart) {
+    Cart Cart;
+    String username;
+    public menuadapter(Context con,int resource,Cart cart,String Username) {
         super(con, resource);
         this.Cart = cart;
+        this.username = Username;
     }
 
     public void AddItem(MenuItem or) {
@@ -65,7 +67,7 @@ Cart Cart;
             @Override
             public void onClick(View v) {
                 Cart.AddItem(item);
-                Cart.EndAddingToCart("j","h","tamerbahaa",getContext());
+                Cart.EndAddingToCart("j",username,getContext());
             }
         });
         return convertView;

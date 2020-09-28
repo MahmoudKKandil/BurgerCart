@@ -2,13 +2,12 @@ package com.prj.burgercart;
 
 public class order {
     private String id,info,desc,date;
-    public order(String id,String info,String desc,String date)
+    public order(String id,String info,String date)
     {
         this.date=date;
         this.id=id;
 
         this.info=info;
-        this.desc=desc;
 
     }
 
@@ -17,9 +16,6 @@ public class order {
         return date;
     }
 
-    public String getDesc() {
-        return desc;
-    }
 
     public String getId() {
         return id;

@@ -20,7 +20,7 @@ public class PendingOrders extends AppCompatActivity {
     orderAdapter or;
     OrdersDB orders;
 String pos;
-    String name,id,info,descrp,date;
+    String name,id,info,date;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,10 +34,9 @@ String pos;
         if(cursor.moveToFirst()){
             do {
                 id = cursor.getString(0);
-                info = cursor.getString(3);
-                descrp = cursor.getString(2);
+                info = cursor.getString(2);
                 date = cursor.getString(1);
-                order orr = new order(id, info, descrp, date);
+                order orr = new order(id, info, date);
                 or.add(orr);
 
             }while(cursor.moveToNext());
@@ -77,10 +76,9 @@ String pos;
             if(cursor.moveToFirst()){
                 do {
                     id = cursor.getString(0);
-                    info = cursor.getString(3);
-                    descrp = cursor.getString(2);
+                    info = cursor.getString(2);
                     date = cursor.getString(1);
-                    order orr = new order(id, info, descrp, date);
+                    order orr = new order(id, info, date);
 
                     or.add(orr);
 
