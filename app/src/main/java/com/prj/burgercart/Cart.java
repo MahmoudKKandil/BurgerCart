@@ -13,7 +13,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 public class Cart {
-    HashMap<Integer, MenuItem> AllOrderItems;
+   public HashMap<Integer, MenuItem> AllOrderItems;
 
     Cart() {
         AllOrderItems = new HashMap<Integer, MenuItem>();
