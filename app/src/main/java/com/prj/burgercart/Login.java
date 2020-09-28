@@ -19,6 +19,7 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
        final  OrdersDB or=new OrdersDB(this);
+       or.UpdatingUser(1);
         final EditText UserName=(EditText) findViewById(R.id.un);
         final EditText Password=(EditText) findViewById(R.id.pt);
         final Button login=(Button)  findViewById(R.id.login);

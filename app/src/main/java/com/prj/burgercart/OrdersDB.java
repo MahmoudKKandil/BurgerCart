@@ -5,6 +5,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.example.myapplication.R;
+
 public class OrdersDB extends SQLiteOpenHelper {
     private static String databaseName = "ordersDatabase";
     SQLiteDatabase ordersdatabase;
@@ -12,9 +14,9 @@ public class OrdersDB extends SQLiteOpenHelper {
     Context C;
 
     public OrdersDB(Context context) {
-        super(context, databaseName, null, 1);
+        super(context, databaseName, null, 3);
+        this.C = context;
     }
-
 
 
     public int CreateNewOrder(String time, String description, String details, int UserID) {
@@ -31,11 +33,12 @@ public class OrdersDB extends SQLiteOpenHelper {
         ordersdatabase.close();
         return (int) id;
     }
-    public  void CreateOrderItems(int OrderID,int ItemID,int quantity){
+
+    public void CreateOrderItems(int OrderID, int ItemID, int quantity) {
         ContentValues itemrow = new ContentValues();
-        itemrow.put("Order_id",OrderID);
-        itemrow.put("Item_ID",ItemID);
-        itemrow.put("Quantity",quantity);
+        itemrow.put("Order_id", OrderID);
+        itemrow.put("Item_ID", ItemID);
+        itemrow.put("Quantity", quantity);
         ordersdatabase = getWritableDatabase();
         ordersdatabase.insert("order_items", null, itemrow);
         ordersdatabase.close();
@@ -59,19 +62,31 @@ public class OrdersDB extends SQLiteOpenHelper {
         db.execSQL("create table user" + "(UserID integer primary key autoincrement, UserName text UNIQUE not null, Password text not null, Phone text UNIQUE not null, Email text UNIQUE not null, Address text not null,UserType text default 'NU') ");
         db.execSQL("create table menu (ItemID integer primary key autoincrement,Name text UNIQUE not null, Description text,Price integer)");
         db.execSQL("create table order_items(Order_id intger,Item_ID integer,Quantity integer,FOREIGN KEY(Item_ID) REFERENCES menu(itemID),FOREIGN KEY(order_ID) REFERENCES orders(id))");
-    }
-public Cursor LoadOrderItems(int orderID)
-{
-    ordersdatabase = getReadableDatabase();
+        String[] menu_title = C.getResources().getStringArray(R.array.Title);
+        String[] menu_price = C.getResources().getStringArray(R.array.Price);
+        String[] menu_description = C.getResources().getStringArray(R.array.Description);
+        for (int i = 0; i < menu_title.length; i++) {
+            ContentValues row = new ContentValues();
+            row.put("Name", menu_title[i]);
+            row.put("Description", menu_description[i]);
+            row.put("Price", menu_price[i]);
+            db.insert("menu", null, row);
+        }
 
-    Cursor cursor = ordersdatabase.rawQuery(" select menu.ItemID, menu.Name, menu.Description, menu.Price from orders" +
-            " inner join order_items on order_items.Order_id = orders.id" +
-            " inner join menu on order_items.Item_ID = menu.ItemID" +" where order_items.Order_id like?", new String[]{String.valueOf(orderID)});
-    if (cursor != null)
-        cursor.moveToFirst();
-    ordersdatabase.close();
-    return cursor;
-}
+    }
+
+    public Cursor LoadOrderItems(int orderID) {
+        ordersdatabase = getReadableDatabase();
+
+        Cursor cursor = ordersdatabase.rawQuery("select menu.ItemID, menu.Name, menu.Description, menu.Price from orders" +
+                " inner join order_items on order_items.Order_id = orders.id" +
+                " inner join menu on order_items.Item_ID = menu.ItemID where order_items.Order_id="+String.valueOf(orderID), null);
+        if (cursor != null)
+            cursor.moveToFirst();
+        ordersdatabase.close();
+        return cursor;
+    }
+
     public void createNewUser(String Name, String pass, String phone, String Email, String Address) {
         ContentValues row = new ContentValues();
         row.put("UserName", Name);
@@ -83,6 +98,7 @@ public Cursor LoadOrderItems(int orderID)
         ordersdatabase.insert("user", null, row);
         ordersdatabase.close();
     }
+
     public void CreateNewMenuItem(String Name, String Description, int Price) {
         ContentValues row = new ContentValues();
         row.put("Name", Name);
@@ -112,7 +128,14 @@ public Cursor LoadOrderItems(int orderID)
         return cursor;
     }
 
-
+    public Cursor getMenu() {
+        ordersdatabase = getReadableDatabase();
+        Cursor cursor = ordersdatabase.rawQuery("select * from menu",null);
+        if (cursor != null)
+            cursor.moveToFirst();
+        ordersdatabase.close();
+        return cursor;
+    }
     public boolean CheckingEmail(String Email) {
         ordersdatabase = getReadableDatabase();
         Cursor cursor = ordersdatabase.rawQuery("select count(*) from user where Email like?", new String[]{Email});
@@ -197,6 +220,7 @@ public Cursor LoadOrderItems(int orderID)
         ordersdatabase.close();
 
     }
+
     public void UpdatingUser2(int id) {
         ordersdatabase = getWritableDatabase();
         ContentValues newValues = new ContentValues();
@@ -222,11 +246,9 @@ public Cursor LoadOrderItems(int orderID)
     }
 
 
-
-    public Cursor ShowAllUsers()
-    {
+    public Cursor ShowAllUsers() {
         ordersdatabase = getReadableDatabase();
-        Cursor cursor=ordersdatabase.rawQuery("select UserName from user", new String[]{});
+        Cursor cursor = ordersdatabase.rawQuery("select UserName from user", new String[]{});
         if (cursor != null)
             cursor.moveToFirst();
         ordersdatabase.close();
@@ -247,8 +269,9 @@ public Cursor LoadOrderItems(int orderID)
 
         return email;
     }
+
     public String GetAdress(String UserName) {
-        String address= "";
+        String address = "";
         ordersdatabase = getReadableDatabase();
         Cursor cursor = ordersdatabase.rawQuery("select * from user where UserName like?", new String[]{UserName});
         cursor.moveToFirst();
@@ -261,34 +284,37 @@ public Cursor LoadOrderItems(int orderID)
 
         return address;
     }
-    public void Updateuseremail(String newemail,String username){
-        ordersdatabase=getWritableDatabase();
+
+    public void Updateuseremail(String newemail, String username) {
+        ordersdatabase = getWritableDatabase();
         ContentValues row = new ContentValues();
-        row.put("Email",newemail);
-        ordersdatabase.update("user",row,"UserName like?",new String[]{username});
+        row.put("Email", newemail);
+        ordersdatabase.update("user", row, "UserName like?", new String[]{username});
         ordersdatabase.close();
 
     }
-    public void Updateuseraddress(String newaddress,String username){
-        ordersdatabase=getWritableDatabase();
+
+    public void Updateuseraddress(String newaddress, String username) {
+        ordersdatabase = getWritableDatabase();
         ContentValues row = new ContentValues();
-        row.put("Address",newaddress);
-        ordersdatabase.update("user",row,"UserName like?",new String[]{username});
+        row.put("Address", newaddress);
+        ordersdatabase.update("user", row, "UserName like?", new String[]{username});
         ordersdatabase.close();
 
     }
-    public void Updateuserpassword(String newpassword,String username){
-        ordersdatabase=getWritableDatabase();
+
+    public void Updateuserpassword(String newpassword, String username) {
+        ordersdatabase = getWritableDatabase();
         ContentValues row = new ContentValues();
-        row.put("Password",newpassword);
-        ordersdatabase.update("user",row,"UserName like?",new String[]{username});
+        row.put("Password", newpassword);
+        ordersdatabase.update("user", row, "UserName like?", new String[]{username});
         ordersdatabase.close();
 
     }
-    public void DeleteUser(String UserName)
-    {
+
+    public void DeleteUser(String UserName) {
         ordersdatabase = getReadableDatabase();
-        ordersdatabase .delete("user", "UserName='" + UserName + "'", null);
+        ordersdatabase.delete("user", "UserName='" + UserName + "'", null);
         ordersdatabase.close();
     }
 }

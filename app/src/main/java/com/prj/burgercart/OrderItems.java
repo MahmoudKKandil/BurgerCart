@@ -13,37 +13,38 @@ import com.example.myapplication.R;
 
 public class OrderItems extends AppCompatActivity {
     OrdersDB orders;
-    String id,name,descrp,Price;
+    String id, name, descrp, Price;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_items);
+        orders = new OrdersDB(this);
         GridView grid = (GridView) findViewById(R.id.GV);
         OrderItemAdapter orderItem = new OrderItemAdapter(getApplicationContext(), R.layout.activity_order_items);
         grid.setAdapter(orderItem);
-        TextView price=(TextView) findViewById(R.id.textView9);
-        int OrderID=Integer.valueOf( getIntent().getStringExtra("OrderID")) ;
-      /*  */
+        TextView price = (TextView) findViewById(R.id.textView9);
+        int OrderID = Integer.valueOf(getIntent().getStringExtra("OrderID"));
+        /*  */
         Cursor cursor = orders.LoadOrderItems(OrderID);
-        if(cursor.moveToFirst()){
+        if (cursor.moveToFirst()) {
             do {
                 id = cursor.getString(0);
                 name = cursor.getString(1);
                 descrp = cursor.getString(2);
-              Price = cursor.getString(3);
-                MenuItem orr = new MenuItem(Integer.valueOf(id), Integer.valueOf(Price),name,descrp);
-                orderItem.add(orr);
+                Price = cursor.getString(3);
+                MenuItem orr = new MenuItem(Integer.valueOf(id),name, descrp, Integer.valueOf(Price));
+                orderItem.AddItem(orr);
 
-            }while(cursor.moveToNext());
+            } while (cursor.moveToNext());
         }
 
-        int p=0 ;
-        for(int i=0;i<orderItem.getCount();i++)
-        {
-         MenuItem m=   (MenuItem) orderItem.getItem(i);
-          p+=  m.Price;
+        int p = 0;
+        for (int i = 0; i < orderItem.getCount(); i++) {
+            MenuItem m = (MenuItem) orderItem.getItem(i);
+            p += m.Price;
         }
-        price.setText("Total pice "+"\n"+p+" LE");
+        price.setText("Total price " + "\n" + p + " LE");
 
     }
 }
