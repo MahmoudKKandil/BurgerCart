@@ -26,16 +26,17 @@
     <GridView
 
         android:id="@+id/GV"
-        android:layout_width="368dp"
-        android:layout_height="550dp"
+        android:layout_width="360dp"
+        android:layout_height="0dp"
         android:layout_marginTop="16dp"
+        android:layout_marginBottom="100dp"
         android:gravity="center"
         android:numColumns="1"
         android:paddingHorizontal="10dp"
         android:paddingVertical="10dp"
         android:verticalSpacing="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText"
         tools:listitem="@layout/order_items" />
@@ -56,25 +57,30 @@
         android:textColorHint="#100F0F"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.894"
+        app:layout_constraintHorizontal_bias="0.947"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/GV" />
 
     <Button
         android:id="@+id/createorder"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:text="CreateOrder"
-        tools:layout_editor_absoluteX="272dp"
-        tools:layout_editor_absoluteY="677dp" />
+        app:layout_constraintEnd_toStartOf="@+id/textView9"
+        app:layout_constraintStart_toEndOf="@+id/orderdetailstexxt"
+        app:layout_constraintTop_toBottomOf="@+id/GV" />
 
-    <TextView
+    <EditText
         android:id="@+id/orderdetailstexxt"
         android:layout_width="160dp"
-        android:layout_height="56dp"
+        android:layout_height="91dp"
+        android:layout_marginTop="37dp"
         android:hint="Order Details "
-        tools:layout_editor_absoluteX="35dp"
-        tools:layout_editor_absoluteY="653dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/GV"
+        app:layout_constraintVertical_bias="1.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

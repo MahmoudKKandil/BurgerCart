@@ -1,6 +1,8 @@
 package com.prj.burgercart;
 
-public class MenuItem {
+import java.io.Serializable;
+
+public class MenuItem implements Serializable {
     public int ID,Price,Quantity;
     public String Title,Description;
 
