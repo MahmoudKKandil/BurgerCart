@@ -13,4 +13,11 @@ public class MenuItem implements Serializable {
         Description = description;
         Quantity=1;
     }
+    public MenuItem(int ID,String title, String description, int price,int quantity) {
+        this.ID = ID;
+        Price = price;
+        Title = title;
+        Description = description;
+        Quantity=quantity;
+    }
 }
