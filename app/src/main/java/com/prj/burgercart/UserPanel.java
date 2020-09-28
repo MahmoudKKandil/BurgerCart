@@ -30,7 +30,7 @@ public class UserPanel extends AppCompatActivity {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent inn = new Intent(UserPanel.this, AddOrder.class);
+                Intent inn = new Intent(UserPanel.this, Menu.class);
                 String username=getIntent().getStringExtra("username");
                 inn.putExtra("username",username);
                 startActivity(inn);

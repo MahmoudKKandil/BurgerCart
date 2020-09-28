@@ -29,8 +29,7 @@ public class Cart {
         }
 
     }
-
-    public void EndAddingToCart( String ordersdetails, String Username, Context context) {
+    public void EndAddingToCart(String ordersdetails, String Username, Context context) {
 
         OrdersDB neworder = new OrdersDB(context);
         int UserID = neworder.getUserId(Username);
