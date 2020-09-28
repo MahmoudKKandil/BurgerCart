@@ -19,12 +19,11 @@ public class OrdersDB extends SQLiteOpenHelper {
     }
 
 
-    public int CreateNewOrder(String time, String description, String details, int UserID) {
+    public int CreateNewOrder(String time, String details, int UserID) {
 
         ContentValues row = new ContentValues();
 
         row.put("time", time);
-        row.put("description", description);
         row.put("details", details);
         row.put("status", "notcompleted");
         row.put("User_ID", UserID);
@@ -58,7 +57,7 @@ public class OrdersDB extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table orders(id integer primary key autoincrement," + "time text not null, description text not null,details,status text not null, User_ID integer, FOREIGN KEY(User_ID) REFERENCES user (UserID) )");
+        db.execSQL("create table orders(id integer primary key autoincrement," + "time text not null,details,status text not null, User_ID integer, FOREIGN KEY(User_ID) REFERENCES user (UserID) )");
         db.execSQL("create table user" + "(UserID integer primary key autoincrement, UserName text UNIQUE not null, Password text not null, Phone text UNIQUE not null, Email text UNIQUE not null, Address text not null,UserType text default 'NU') ");
         db.execSQL("create table menu (ItemID integer primary key autoincrement,Name text UNIQUE not null, Description text,Price integer)");
         db.execSQL("create table order_items(Order_id intger,Item_ID integer,Quantity integer,FOREIGN KEY(Item_ID) REFERENCES menu(itemID),FOREIGN KEY(order_ID) REFERENCES orders(id))");
