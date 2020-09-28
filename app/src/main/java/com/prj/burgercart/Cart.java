@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.example.myapplication.R;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -12,7 +13,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-public class Cart {
+public class Cart implements Serializable {
    public HashMap<Integer, MenuItem> AllOrderItems;
 
     Cart() {

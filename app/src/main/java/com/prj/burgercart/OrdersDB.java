@@ -14,7 +14,7 @@ public class OrdersDB extends SQLiteOpenHelper {
     Context C;
 
     public OrdersDB(Context context) {
-        super(context, databaseName, null, 3);
+        super(context, databaseName, null, 4);
         this.C = context;
     }
 

@@ -31,7 +31,7 @@ public class Menu extends AppCompatActivity {
             public void onClick(View v) {
                 Intent inn = new Intent(Menu.this,OrdersCart.class);
                 inn.putExtra("username",username);
-                inn.putExtra("cart",(Serializable)cart);
+                inn.putExtra("cart",cart);
                 startActivity(inn);
             }
         });
