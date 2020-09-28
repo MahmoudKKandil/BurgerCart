@@ -88,13 +88,7 @@ String pos;
             }
             return true;
         }
-        if(item.getItemId()==R.id.fh)
-        {
-            Intent inn=new Intent(PendingOrders.this,OrderItems.class);
-            inn.putExtra("OrderID",pos);
-            startActivity(inn);
-            return true;
-        }
+
         return false;
     }
 }

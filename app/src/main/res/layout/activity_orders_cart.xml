@@ -27,7 +27,7 @@
 
         android:id="@+id/GV"
         android:layout_width="360dp"
-        android:layout_height="0dp"
+        android:layout_height="300dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="100dp"
         android:gravity="center"
@@ -45,7 +45,8 @@
         android:id="@+id/textView9"
         android:layout_width="107dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginBottom="57dp"
         android:layout_weight="1"
         android:background="@drawable/layout_bg"
         android:fontFamily="sans-serif-black"
@@ -56,31 +57,34 @@
         android:textColorHighlight="#FFFFFF"
         android:textColorHint="#100F0F"
         android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/createorder"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.947"
+        app:layout_constraintHorizontal_bias="0.699"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/GV" />
 
     <Button
         android:id="@+id/createorder"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_width="245dp"
+        android:layout_height="39dp"
         android:text="CreateOrder"
-        app:layout_constraintEnd_toStartOf="@+id/textView9"
-        app:layout_constraintStart_toEndOf="@+id/orderdetailstexxt"
-        app:layout_constraintTop_toBottomOf="@+id/GV" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/orderdetailstexxt"
         android:layout_width="160dp"
         android:layout_height="91dp"
-        android:layout_marginTop="37dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginRight="17dp"
+        android:layout_marginBottom="28dp"
         android:hint="Order Details "
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/createorder"
+        app:layout_constraintEnd_toStartOf="@+id/textView9"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/GV"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/GV" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

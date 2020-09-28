@@ -25,24 +25,26 @@
 
     <GridView
         android:id="@+id/GV"
-        android:layout_width="368dp"
+        android:layout_width="0dp"
         android:layout_height="550dp"
-        android:layout_marginTop="10dp"
         android:gravity="center"
         android:numColumns="1"
-        android:paddingVertical="10dp"
         android:paddingHorizontal="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:paddingVertical="10dp"
         android:verticalSpacing="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText"
+        app:layout_constraintVertical_bias="0.0"
         tools:listitem="@layout/order_items" />
 
     <TextView
         android:id="@+id/textView9"
-        android:layout_width="107dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="40dp"
         android:layout_weight="1"
         android:background="@drawable/layout_bg"
         android:fontFamily="sans-serif-black"
@@ -53,10 +55,11 @@
         android:textColorHighlight="#FFFFFF"
         android:textColorHint="#100F0F"
         android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.894"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/GV" />
+        app:layout_constraintTop_toBottomOf="@+id/GV"
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
