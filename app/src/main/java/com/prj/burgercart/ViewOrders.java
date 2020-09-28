@@ -31,7 +31,7 @@ public class ViewOrders extends AppCompatActivity {
 
 
             for (int i = 0; i < cursor.getCount(); i++) {
-                String str = cursor.getString(0) + " " + cursor.getString(1).toString() + " " + cursor.getString(2).toString() + " " + cursor.getString(3).toString();
+                String str = cursor.getString(1) + " Order Id: " + cursor.getString(0).toString() + " Status: " + cursor.getString(3).toString() + "\nDetails: " + cursor.getString(2).toString();
                 listadapter.add(str);
                 cursor.moveToNext();
             }
