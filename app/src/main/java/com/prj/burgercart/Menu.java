@@ -18,7 +18,9 @@ public class Menu extends AppCompatActivity {
         GridView grid_menu = (GridView)findViewById(R.id.grd_menu);
         OrdersDB db = new OrdersDB(this);
         Cart cart = new Cart();
-        menuadapter menuAdapter = new menuadapter(getApplicationContext(),R.layout.menuitem,cart);
+        String username=getIntent().getStringExtra("username");
+
+        menuadapter menuAdapter = new menuadapter(getApplicationContext(),R.layout.menuitem,cart,username);
         Cursor cursor =db.getMenu();
         do {
             menuAdapter.AddItem(new MenuItem(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getInt(3)));

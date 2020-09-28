@@ -8,12 +8,11 @@
 
     <GridView
         android:id="@+id/grd_menu"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="409dp"
+        android:layout_height="574dp"
         android:background="#8ED3DC"
         android:gravity="center"
         android:numColumns="1"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView12"
@@ -34,4 +33,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_checkout"
+        android:layout_width="406dp"
+        android:layout_height="61dp"
+        android:text="Checkout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/grd_menu" />
 </androidx.constraintlayout.widget.ConstraintLayout>
