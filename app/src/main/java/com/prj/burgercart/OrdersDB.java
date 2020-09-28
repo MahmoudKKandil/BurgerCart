@@ -64,7 +64,9 @@ public Cursor LoadOrderItems(int orderID)
 {
     ordersdatabase = getReadableDatabase();
 
-    Cursor cursor = ordersdatabase.rawQuery(" select menu.ItemID, menu.Name, menu.Description, menu.Price from " + "orders" + " inner join " + "order_items" + " on " + "order_items.Order_id" + " = " + "orders.id" + " inner join " + "menu" + " on " + "order_items.Item_ID" + " = " + "menu.ItemID" +" where order_items.Order_id like?", new String[]{String.valueOf(orderID)});
+    Cursor cursor = ordersdatabase.rawQuery(" select menu.ItemID, menu.Name, menu.Description, menu.Price from orders" +
+            " inner join order_items on order_items.Order_id = orders.id" +
+            " inner join menu on order_items.Item_ID = menu.ItemID" +" where order_items.Order_id like?", new String[]{String.valueOf(orderID)});
     if (cursor != null)
         cursor.moveToFirst();
     ordersdatabase.close();

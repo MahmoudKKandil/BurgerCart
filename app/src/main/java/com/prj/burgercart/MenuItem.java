@@ -9,5 +9,6 @@ public class MenuItem {
         Price = price;
         Title = title;
         Description = description;
+        Quantity=1;
     }
 }

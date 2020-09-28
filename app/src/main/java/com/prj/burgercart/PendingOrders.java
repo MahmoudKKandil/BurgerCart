@@ -27,7 +27,7 @@ String pos;
         setContentView(R.layout.activity_pendingorders);
         ordersList = (ListView)findViewById(R.id.listview11);
         orders = new OrdersDB(getApplicationContext());
-        or = new orderAdapter(getApplicationContext(),R.layout.row_layout);
+        or = new orderAdapter(this,R.layout.row_layout);
         ordersList.setAdapter(or);
         Cursor cursor = orders.fetchAllOrders();
 
@@ -70,7 +70,7 @@ String pos;
         {
             Toast.makeText(this,"Status has been changed",Toast.LENGTH_LONG).show();
             orders.Searching(pos);
-            or = new orderAdapter(getApplicationContext(),R.layout.row_layout);
+            or = new orderAdapter(this,R.layout.row_layout);
             ordersList.setAdapter(or);
             Cursor cursor = orders.fetchAllOrders();
 

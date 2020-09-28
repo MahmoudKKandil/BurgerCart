@@ -1,6 +1,7 @@
 package com.prj.burgercart;
 
 import android.content.Context;
+import android.content.Intent;
 import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,9 +19,11 @@ import java.util.List;
 
 public class orderAdapter extends ArrayAdapter {
   ArrayList list=new ArrayList();
+  Context con;
     public orderAdapter(Context con,int resource)
     {
         super(con,resource);
+        this.con = con;
     }
 static class layoutHandler
 {
@@ -47,28 +50,34 @@ static class layoutHandler
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        View row=convertView;
+        View row = convertView;
         layoutHandler lh;
-        if(row==null)
-        {
-            LayoutInflater lf=(LayoutInflater) this.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            row=lf.inflate(R.layout.row_layout,parent,false);
-            lh=new layoutHandler();
-            lh.id=(TextView)row.findViewById(R.id.orderId);
-            lh.date=(TextView)row.findViewById(R.id.orderdate);
-            lh.des=(TextView)row.findViewById(R.id.ordedesc);
-            lh.info=(TextView)row.findViewById(R.id.orderinfo);
+
+        if (row == null) {
+            LayoutInflater lf = (LayoutInflater) this.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            row = lf.inflate(R.layout.row_layout, parent, false);
+            lh = new layoutHandler();
+            lh.id = (TextView) row.findViewById(R.id.orderId);
+            lh.date = (TextView) row.findViewById(R.id.orderdate);
+            lh.des = (TextView) row.findViewById(R.id.ordedesc);
+            lh.info = (TextView) row.findViewById(R.id.orderinfo);
             row.setTag(lh);
+        } else {
+            lh = (layoutHandler) row.getTag();
         }
-        else
-            {
-                lh=(layoutHandler)row.getTag();
-            }
-        order ORDER=(order) this.getItem((position));
+        final order ORDER = (order) this.getItem((position));
         lh.id.setText(ORDER.getId().toString());
         lh.date.setText(ORDER.getDate().toString());
         lh.info.setText(ORDER.getInfo().toString());
         lh.des.setText(ORDER.getDesc());
-    return row;
+        row.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent inn = new Intent(con, OrderItems.class);
+                inn.putExtra("OrderID",ORDER.getId());
+                con.startActivity(inn);
+            }
+        });
+        return row;
     }
 }

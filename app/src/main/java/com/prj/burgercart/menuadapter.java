@@ -22,11 +22,10 @@ import java.util.List;
 
 public class menuadapter extends ArrayAdapter {
     ArrayList list=new ArrayList();
-
-    public menuadapter(Context con,int resource)
-    {
-        super(con,resource);
-
+Cart Cart;
+    public menuadapter(Context con,int resource,Cart cart) {
+        super(con, resource);
+        this.Cart = cart;
     }
 
     public void AddItem(MenuItem or) {
@@ -56,12 +55,19 @@ public class menuadapter extends ArrayAdapter {
         TextView title = (TextView) convertView.findViewById(R.id.txt_title);
         TextView price = (TextView) convertView.findViewById(R.id.txt_price);
         TextView description = (TextView) convertView.findViewById(R.id.txt_description);
-
-        MenuItem item = (MenuItem) this.getItem((position));
+        Button add = (Button)convertView.findViewById(R.id.btn_add);
+        final MenuItem item = (MenuItem) this.getItem((position));
 
         title.setText(item.Title);
         price.setText(String.valueOf(item.Price));
         description.setText(item.Description);
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Cart.AddItem(item);
+                Cart.EndAddingToCart("j","h","tamerbahaa",getContext());
+            }
+        });
         return convertView;
     }
 }
