@@ -33,6 +33,7 @@ public class Menu extends AppCompatActivity {
                 inn.putExtra("username",username);
                 inn.putExtra("cart",cart);
                 startActivity(inn);
+                finish();
             }
         });
         menuadapter menuAdapter = new menuadapter(getApplicationContext(),R.layout.menuitem,cart,username);

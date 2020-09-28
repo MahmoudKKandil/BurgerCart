@@ -67,7 +67,6 @@ public class menuadapter extends ArrayAdapter {
             @Override
             public void onClick(View v) {
                 Cart.AddItem(item);
-                Cart.EndAddingToCart("j",username,getContext());
             }
         });
         return convertView;
