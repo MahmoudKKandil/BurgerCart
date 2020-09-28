@@ -77,7 +77,7 @@ public class OrdersDB extends SQLiteOpenHelper {
     public Cursor LoadOrderItems(int orderID) {
         ordersdatabase = getReadableDatabase();
 
-        Cursor cursor = ordersdatabase.rawQuery("select menu.ItemID, menu.Name, menu.Description, menu.Price from orders" +
+        Cursor cursor = ordersdatabase.rawQuery("select menu.ItemID, menu.Name, menu.Description, menu.Price,order_items.Quantity from orders" +
                 " inner join order_items on order_items.Order_id = orders.id" +
                 " inner join menu on order_items.Item_ID = menu.ItemID where order_items.Order_id="+String.valueOf(orderID), null);
         if (cursor != null)

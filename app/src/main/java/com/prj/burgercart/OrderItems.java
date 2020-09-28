@@ -13,7 +13,6 @@ import com.example.myapplication.R;
 
 public class OrderItems extends AppCompatActivity {
     OrdersDB orders;
-    String id, name, descrp, Price;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,11 +28,12 @@ public class OrderItems extends AppCompatActivity {
         Cursor cursor = orders.LoadOrderItems(OrderID);
         if (cursor.moveToFirst()) {
             do {
-                id = cursor.getString(0);
-                name = cursor.getString(1);
-                descrp = cursor.getString(2);
-                Price = cursor.getString(3);
-                MenuItem orr = new MenuItem(Integer.valueOf(id),name, descrp, Integer.valueOf(Price));
+               int id = cursor.getInt(0);
+                String name = cursor.getString(1);
+               String descrp = cursor.getString(2);
+               int Price = cursor.getInt(3);
+               int Quantity = cursor.getInt(4);
+                MenuItem orr = new MenuItem(id,name, descrp, Price,Quantity);
                 orderItem.AddItem(orr);
 
             } while (cursor.moveToNext());
